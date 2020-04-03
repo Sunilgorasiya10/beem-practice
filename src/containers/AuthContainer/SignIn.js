@@ -12,9 +12,6 @@ import { connect } from 'react-redux';
 
 class SignIn extends Component {
 
-    actions = () => {
-        alert('Successful')
-    }
     render() {
         const { navigation, handleSubmit } = this.props;
         return (
@@ -44,7 +41,7 @@ class SignIn extends Component {
                             component={CTextInput}>
                         </Field>
                         <CButton
-                            onPress={() => this.actions()}
+                            onPress={() => navigation.navigate('CreateNewTour')}
                             containerStyle={styles.buttonContainer}>{auth.sign_in}
                         </CButton>
                         <View style={{ flexDirection: 'row', paddingHorizontal: StyleConfig.countPixelRatio(24) }}>

@@ -7,11 +7,15 @@ import SignUp from '../containers/AuthContainer/SignUp';
 import Account from '../containers/AuthContainer/Account';
 import Splash from '../containers/AuthContainer/Splash';
 
+//DashboardContainer
+import CreateNewTour from '../containers/DashboardContainer/CreateNewTour';
+
 const AuthStack = createStackNavigator({
     Splash: { screen: Splash },
     Account: { screen: Account },
     SignIn: { screen: SignIn },
     SignUp: { screen: SignUp },
+    CreateNewTour: { screen: CreateNewTour },
 }, {
     // headerMode: 'none',
 })
