@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 
 class SignIn extends Component {
 
-    actions = (values) => {
+    actions = () => {
         alert('Successful')
     }
     render() {
@@ -44,13 +44,13 @@ class SignIn extends Component {
                             component={CTextInput}>
                         </Field>
                         <CButton
-                            onPress={handleSubmit(this.actions)}
+                            onPress={() => this.actions()}
                             containerStyle={styles.buttonContainer}>{auth.sign_in}
                         </CButton>
                         <View style={{ flexDirection: 'row', paddingHorizontal: StyleConfig.countPixelRatio(24) }}>
                             <CText type={'medium'} style={styles.textStyle} onPress={() => alert('forgot password')}>{auth.forgot_password}</CText>
                             <View style={{ flex: 1 }} />
-                            <CText type={'medium'} style={styles.textStyle} onPress={navigation.navigate('SignUp')}>{auth.create_an_account}</CText>
+                            <CText type={'medium'} style={styles.textStyle} onPress={() => navigation.navigate('SignUp')}>{auth.create_an_account}</CText>
                         </View>
                         <View style={styles.alternativeView}>
                             <CText type={'regular'} style={styles.textStyle} >{auth.alternatively_sign_in_with}</CText>
