@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, Text, Button } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import StyleConfig from '../../assets/StyleConfig';
 import AppImages from '../../assets/images/index'
 import CText from '../../components/CText';
@@ -23,7 +23,7 @@ class Account extends Component {
                             containerStyle={styles.buttonContainer}>{auth.sign_in}
                         </CButton>
                         <CButton
-                            onPress={() => navigation.navigate('SignIn')}
+                            onPress={() => navigation.navigate('SignUp')}
                             textStyle={styles.buttonText}
                             containerStyle={styles.signUpButtonContainer}>{auth.create_an_account}
                         </CButton>

@@ -6,46 +6,53 @@ import CText from "../../components/CText";
 import AppImages from '../../assets/images';
 import CTextInput from '../../components/CTextInput';
 import CButton from '../../components/CButton';
+import { Field, reduxForm } from 'redux-form';
+import { email_validator, password_validator, name_validator } from '../../common/global';
+import { connect } from 'react-redux';
 
 class SignUp extends Component {
+
+    actions = (values) => {
+        alert('Successful')
+    }
     render() {
-        const { navigation } = this.props;
+        const { navigation, handleSubmit } = this.props;
         return (
             <View style={styles.container}>
                 <View>
                     <View style={styles.imageContainer}>
-                        <CText type={'bold'} style={styles.detailText}>{auth.sign_up}</CText>
-                        <Image source={AppImages.signUp} resizeMode={'contain'} style={styles.imageStyle} />
+                        <CText type={'bold'} style={styles.detailText}>{auth.create_an_account}</CText>
+                        <Image source={AppImages.SignUp} resizeMode={'contain'} style={styles.imageStyle} />
                     </View>
                     <View style={{ paddingHorizontal: StyleConfig.countPixelRatio(20) }}>
-                        <CTextInput
+                        <Field
                             name='name'
                             ref='name'
                             refField={ref => (this['name'] = ref)}
                             placeholder="Name"
-                            placeholderTextColor={StyleConfig.COLOR.GREY_DIM}
                             nextField={'email'}
                             returnKeyType={'next'}
-                            onSubmitEdit={(event) => { this['email'].focus() }}>
-                        </CTextInput>
-                        <CTextInput
+                            onSubmitEdit={(event) => { this['email'].focus() }}
+                            component={CTextInput}>
+                        </Field>
+                        <Field
                             name='email'
                             ref='email'
                             refField={ref => (this['email'] = ref)}
                             placeholder="Email Address"
-                            placeholderTextColor={StyleConfig.COLOR.GREY_DIM}
                             nextField={'password'}
                             returnKeyType={'next'}
-                            onSubmitEdit={(event) => { this['password'].focus() }}>
-                        </CTextInput>
-                        <CTextInput
+                            onSubmitEdit={(event) => { this['password'].focus() }}
+                            component={CTextInput}>
+                        </Field>
+                        <Field
                             name='password'
                             ref='password'
                             refField={ref => (this['password'] = ref)}
                             placeholder="Password"
-                            placeholderTextColor={StyleConfig.COLOR.GREY_DIM}
-                            secureTextEntry={true}>
-                        </CTextInput>
+                            secureTextEntry={true}
+                            component={CTextInput}>
+                        </Field>
 
                         <View style={{ marginHorizontal: StyleConfig.countPixelRatio(20), marginTop: StyleConfig.countPixelRatio(10) }}>
                             <CText type={'bold'} style={styles.textStyle} >{auth.register_note}
@@ -94,7 +101,41 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+const initialValues = {
+    email: '',
+    password: '',
+    name: '',
+};
+
+const Validation = values => {
+    const errors = {};
+
+    errors.name = !values.name
+        ? 'Name is required'
+        : (!name_validator.test(values.name)) ? 'Invalid name' : 'undefined';
+    errors.email = !values.email
+        ? 'Email is required'
+        : (!email_validator.test(values.email)) ? 'Invalid Email' : 'undefined';
+    errors.password = !values.password
+        ? 'Password is required'
+        : (values.password.length < 8) ? 'password must containt at least 8 characters' :
+            (!password_validator.test(values.password)) ? 'Password must contain at least one number and one special character' : undefined;
+    return errors;
+}
+
+const withForm = reduxForm({
+    form: 'signUpForm',
+    Validation,
+    initialValues
+})
+
+const mapStateToProps = (state) => {
+    return {
+        state,
+    }
+}
+
+export default connect(mapStateToProps, null)(withForm(SignUp));
 
 const styles = StyleSheet.create({
     container: {
@@ -104,7 +145,7 @@ const styles = StyleSheet.create({
     },
 
     imageContainer: {
-        height: StyleConfig.responsiveHeight(40),
+        height: StyleConfig.responsiveHeight(30),
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -115,7 +156,6 @@ const styles = StyleSheet.create({
     },
 
     detailText: {
-        bottom: StyleConfig.countPixelRatio(26),
         fontSize: StyleConfig.fontSizeH2_3,
         color: StyleConfig.COLOR.GREY_DARK
     },

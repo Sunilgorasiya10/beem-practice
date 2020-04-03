@@ -6,11 +6,17 @@ import CText from "../../components/CText";
 import AppImages from '../../assets/images';
 import CTextInput from '../../components/CTextInput';
 import CButton from '../../components/CButton';
-import { Field } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
+import { email_validator, password_validator } from '../../common/global';
+import { connect } from 'react-redux';
 
 class SignIn extends Component {
+
+    actions = (values) => {
+        alert('Successful')
+    }
     render() {
-        const { navigation } = this.props;
+        const { navigation, handleSubmit } = this.props;
         return (
             <View style={styles.container}>
                 <View>
@@ -24,23 +30,21 @@ class SignIn extends Component {
                             ref='email'
                             refField={ref => (this['email'] = ref)}
                             placeholder="Email Address"
-                            placeholderTextColor={StyleConfig.COLOR.GREY_DIM}
                             nextField={'password'}
                             returnKeyType={'next'}
-                            onSubmitEdit={(event) => { this['password'].focus() }}>
-                            component={CTextInput}
+                            onSubmitEdit={(event) => { this['password'].focus() }}
+                            component={CTextInput}>
                         </Field>
                         <Field
                             name='password'
                             ref='password'
                             refField={ref => (this['password'] = ref)}
                             placeholder="Password"
-                            placeholderTextColor={StyleConfig.COLOR.GREY_DIM}
                             secureTextEntry={true}
                             component={CTextInput}>
                         </Field>
                         <CButton
-                            onPress={() => alert('successful')}
+                            onPress={handleSubmit(this.actions)}
                             containerStyle={styles.buttonContainer}>{auth.sign_in}
                         </CButton>
                         <View style={{ flexDirection: 'row', paddingHorizontal: StyleConfig.countPixelRatio(24) }}>
@@ -81,7 +85,37 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn;
+const initialValues = {
+    email: '',
+    password: '',
+};
+
+const Validation = values => {
+    const errors = {};
+
+    errors.email = !values.email
+        ? 'Email is required'
+        : (!email_validator.test(values.email)) ? 'Invalid Email' : 'undefined';
+    errors.password = !values.password
+        ? 'Password is required'
+        : (values.password.length < 8) ? 'password must containt at least 8 characters' :
+            (!password_validator.test(values.password)) ? 'Password must contain at least one number and one special character' : undefined;
+    return errors;
+}
+
+const withForm = reduxForm({
+    form: 'loginForm',
+    Validation,
+    initialValues
+})
+
+const mapStateToProps = (state) => {
+    return {
+        state,
+    }
+}
+
+export default connect(mapStateToProps, null)(withForm(SignIn));
 
 const styles = StyleSheet.create({
     container: {

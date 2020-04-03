@@ -13,7 +13,7 @@ const AuthStack = createStackNavigator({
     SignIn: { screen: SignIn },
     SignUp: { screen: SignUp },
 }, {
-    headerMode: 'none',
+    // headerMode: 'none',
 })
 
 const AppNavigator = createStackNavigator({

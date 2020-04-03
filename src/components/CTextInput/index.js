@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, Text } from 'react-native';
 import StyleConfig from '../../assets/StyleConfig'
 
 const CTextInput = (props) => {
@@ -9,6 +9,7 @@ const CTextInput = (props) => {
         refField,
         returnKeyType,
         input: { onChange, value },
+        meta: { error, touched },
         onSubmitEdit } = props;
 
     return (
@@ -28,6 +29,7 @@ const CTextInput = (props) => {
                     }
                 }}>
             </TextInput>
+            {touched && error && <Text style={{ color: 'red' }}>{error}</Text>}
         </View>
     )
 }
@@ -36,11 +38,25 @@ export default CTextInput;
 
 const styles = StyleSheet.create({
     txtInputStyle: {
-        borderWidth: 1,
-        borderColor: 'red',
-        paddingHorizontal: StyleConfig.countPixelRatio(15),
-        borderRadius: 6,
-        marginVertical: StyleConfig.countPixelRatio(8),
-        color: StyleConfig.COLOR.WHITE,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: StyleConfig.countPixelRatio(12),
+        minHeight: StyleConfig.countPixelRatio(StyleConfig.isIphone ? 44 : 32),
+        borderWidth: StyleConfig.countPixelRatio(1),
+        borderRadius: StyleConfig.countPixelRatio(30),
+        borderColor: StyleConfig.COLOR.WHITE_OFF,
+        fontSize: StyleConfig.fontSizeH3,
+        fontFamily: StyleConfig.fontMedium,
+        backgroundColor: StyleConfig.COLOR.WHITE,
+        paddingHorizontal: StyleConfig.countPixelRatio(12),
+        shadowColor: StyleConfig.COLOR.BLACK,
+        shadowOpacity: 0.1,
+        elevation: 2,
+        shadowOffset: {
+            height: 0,
+            width: 0
+        },
+
     }
 })
