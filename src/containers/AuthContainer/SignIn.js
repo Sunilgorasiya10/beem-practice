@@ -45,9 +45,13 @@ class SignIn extends Component {
                             containerStyle={styles.buttonContainer}>{auth.sign_in}
                         </CButton>
                         <View style={{ flexDirection: 'row', paddingHorizontal: StyleConfig.countPixelRatio(24) }}>
-                            <CText type={'medium'} style={styles.textStyle} onPress={() => alert('forgot password')}>{auth.forgot_password}</CText>
+                            <TouchableOpacity onPress={() => alert('forgot password')}>
+                                <CText type={'medium'} style={styles.textStyle}>{auth.forgot_password}</CText>
+                            </TouchableOpacity>
                             <View style={{ flex: 1 }} />
-                            <CText type={'medium'} style={styles.textStyle} onPress={() => navigation.navigate('SignUp')}>{auth.create_an_account}</CText>
+                            <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                                <CText type={'medium'} style={styles.textStyle}>{auth.create_an_account}</CText>
+                            </TouchableOpacity>
                         </View>
                         <View style={styles.alternativeView}>
                             <CText type={'regular'} style={styles.textStyle} >{auth.alternatively_sign_in_with}</CText>

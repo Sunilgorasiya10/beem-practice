@@ -17,6 +17,6 @@ export default CreateNewTour;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:
+        backgroundColor: StyleConfig.COLOR.WHITE,
     }
 })
