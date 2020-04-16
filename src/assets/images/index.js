@@ -12,6 +12,9 @@ const AppImages = {
     facebookLogo: require('./facebook.png'),
     googleLogo: require('./google.png'),
     weChatLogo: require('./wechat.png'),
+
+    //What I Offer
+    photography: require('./photography.png'),
 }
 
 export default AppImages;
