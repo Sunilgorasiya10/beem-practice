@@ -1,12 +1,16 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import CText from '../../components/CText';
 import StyleConfig from '../../assets/StyleConfig';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const CButton = ({ children, containerStyle, onPress, textStyle }) => (
+const CButton = ({ children, containerStyle, onPress, textStyle, isLeftIcon, leftIconName, leftIconSize, leftIconColor }) => (
     <TouchableOpacity
         style={[styles.buttonContainer, containerStyle]}
         onPress={onPress}>
+        {isLeftIcon &&
+            <Icon style={styles.leftIconStyle} name={leftIconName} size={leftIconSize} color={leftIconColor}></Icon>
+        }
         <CText type={'medium'} style={[styles.buttonText, textStyle]}>{children}</CText>
     </TouchableOpacity>
 );
@@ -38,4 +42,7 @@ const styles = StyleSheet.create({
         color: StyleConfig.COLOR.WHITE,
         fontSize: StyleConfig.fontSizeH2_3
     },
+    leftIconStyle: {
+        paddingRight: StyleConfig.countPixelRatio(8),
+    }
 })

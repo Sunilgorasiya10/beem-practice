@@ -11,6 +11,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import CTextInput from '../../components/CTextInput';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import { create } from 'react-test-renderer';
 
 class BasicInfo extends Component {
 
@@ -28,7 +29,7 @@ class BasicInfo extends Component {
         )
     }
     _renderItem = (item, index) => {
-        const { name, blurOnSubmit, containerStyle, showCurSymbol, isQuestion, keyboardType } = item;
+        const { name, blurOnSubmit, containerStyle, showCurSymbol, isQuestion, isDescription, isDropdown } = item;
         return (
             <View style={styles.inputContainer}>
                 {(item.label) &&
@@ -43,20 +44,41 @@ class BasicInfo extends Component {
                         }
                     </View>
                 }
-                <Field
-                    {...item}
-                    showCurSymbol={showCurSymbol}
-                    refField={ref => this[name] = ref}
-                    editable={true}
-                    keyboardType={keyboardType}
-                    inputStyle={{ fontSize: StyleConfig.countPixelRatio(14) }}
-                    textStyle={{ fontSize: StyleConfig.countPixelRatio(14) }}
-                    blurOnSubmit={blurOnSubmit}
-                    containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
-                    flatListContainerStyle={styles.dropDownContainerStyle}
-                    component={CTextInput}
-                >
-                </Field>
+                {(isDropdown !== true) ?
+                    (isDescription !== true) ?
+                        <View style={styles.textInputStyle}>
+                            <Field
+                                {...item}
+                                refField={ref => this[name] = ref}
+                                containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
+                                component={CTextInput}></Field>
+                        </View>
+                        :
+                        <View style={styles.textInputStyle}>
+                            <Field
+                                {...item}
+                                refField={ref => this[name] = ref}
+                                containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
+                                component={CTextInput}>
+                            </Field>
+                            <View style={{ flex: 1, alignItems: 'flex-end' }}>
+                                <MaterialCommunityIcons name={'pencil'} size={20} style={{ position: 'absolute', right: 0 }} color={StyleConfig.COLOR.RED_REDICAL} />
+                            </View>
+                        </View>
+                    :
+                    <View style={styles.textInputStyle}>
+                        <Field
+                            {...item}
+                            refField={ref => this[name] = ref}
+                            containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
+                            component={CTextInput}>
+                        </Field>
+                        <View style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'center' }}>
+                            <MaterialCommunityIcons name={'chevron-down'} size={30} style={{ position: 'absolute', right: -15 }} color={StyleConfig.COLOR.RED_REDICAL}></MaterialCommunityIcons>
+                        </View>
+                    </View>
+
+                }
             </View >
         )
     }
@@ -67,9 +89,8 @@ class BasicInfo extends Component {
                 label: createNewTour.experience_name,
                 placeholder: createNewTour.enter_a_tour_name,
                 keyboardType: 'default',
-                returnKeyType: 'done',
+                returnKeyType: 'next',
                 isRequire: true,
-                blurOnSubmit: true,
                 onSubmitEditing: () => { Keyboard.dismiss() }
             },
             {
@@ -94,6 +115,8 @@ class BasicInfo extends Component {
                 placeholder: createNewTour.select_a_tour_type,
                 keyboardType: 'default',
                 isRequire: true,
+                isDropdown: true,
+                isDropdown: true,
             },
             {
                 name: 'transportation_method',
@@ -104,6 +127,7 @@ class BasicInfo extends Component {
                 placeholder: createNewTour.select_a_transportation_method,
                 keyboardType: 'default',
                 isRequire: true,
+                isDropdown: true,
             },
             {
                 name: 'number_of_participants',
@@ -125,6 +149,7 @@ class BasicInfo extends Component {
                 placeholder: createNewTour.select_a_tour_option,
                 keyboardType: 'default',
                 isRequire: true,
+                isDropdown: true,
             },
             {
                 name: 'duration',
@@ -179,9 +204,8 @@ class BasicInfo extends Component {
                 maxLength: 1500,
                 isShowLimit: true,
                 containerStyle: styles.textAreaStyle,
-                rightIcon: () => <MaterialCommunityIcons size={20} color={StyleConfig.COLOR.RED_REDICAL} name={'pencil'}
-                    style={styles.rightIconStyle} />,
                 isRequire: true,
+                isDescription: true
 
             },
             {
@@ -193,6 +217,7 @@ class BasicInfo extends Component {
                 placeholder: 'Select Language',
                 keyboardType: 'default',
                 isRequire: true,
+                isDropdown: true,
             },
             {
                 name: 'restrictions',
@@ -203,7 +228,54 @@ class BasicInfo extends Component {
                 placeholder: 'Select Restrictions',
                 keyboardType: 'default',
                 isQuestion: true,
+                isDropdown: true,
             },
+        ];
+        let INCLUSIONS_DATA = [
+            {
+                name: 'inclusion_type',
+                text: 'inclusionType',
+                input: 'dropdown',
+                textStyle: { fontSize: StyleConfig.countPixelRatio(14) },
+                label: createNewTour.inclusion_type,
+                returnKeyType: 'done',
+                placeholder: 'Select Inclusion Type',
+                keyboardType: 'default',
+                isRequire: true,
+                isQuestion: true,
+                isDropdown: true,
+
+            },
+            {
+                name: 'inclusion_description',
+                text: 'inclusionDescription',
+                textStyle: { fontSize: StyleConfig.countPixelRatio(14) },
+                label: createNewTour.inclusion_description,
+                returnKeyType: 'next',
+                placeholder: createNewTour.inclusion_description,
+                keyboardType: 'default',
+                isRequire: true,
+                isQuestion: true,
+                maxLength: 1500,
+                multiline: true,
+                containerStyle: styles.textAreaStyle,
+                isDescription: true,
+            }
+        ];
+
+        let BRING_DATA = [
+            {
+                name: 'suggested_to_bring',
+                label: createNewTour.suggested_to_bring,
+                placeholder: createNewTour.suggested_to_bring,
+                returnKeyType: 'next',
+                multiline: true,
+                maxLength: 1500,
+                keyboardType: 'default',
+                containerStyle: styles.textAreaStyle,
+                isRequire: true,
+                isDescription: true,
+            }
         ]
         return (
             <ScrollView>
@@ -237,9 +309,30 @@ class BasicInfo extends Component {
                         {FIELDS_DATA.map((value, key) => {
                             return this._renderItem(value, key)
                         })}
+                        {this._renderLineView(createNewTour.inclusions)}
+                        {INCLUSIONS_DATA.map((value, key) => { return this._renderItem(value, key) })}
+                        <CButton
+                            onPress={() => alert('press')}
+                            isLeftIcon
+                            leftIconName={'plus'}
+                            leftIconSize={30}
+                            leftIconColor={StyleConfig.COLOR.WHITE_OFF}
+                            textStyle={{ fontSize: StyleConfig.fontSizeH3 }}
+                            containerStyle={[styles.addButtonContainer, { backgroundColor: StyleConfig.COLOR.GREY_DARK }]}>
+                            {createNewTour.add_inclusion}
+                        </CButton>
+                        {BRING_DATA.map((value, key) => this._renderItem(value, key))}
+                        <View>
+                            <CButton
+                                onPress={() => alert('pressed')}
+                                textStyle={{ fontSize: 20, color: StyleConfig.COLOR.WHITE, fontFamily: StyleConfig.getFont('medium') }}
+                                containerStyle={styles.buttonContainer}>
+                                {createNewTour.save_and_next}
+                            </CButton>
+                        </View>
                     </View>
                 </View>
-            </ScrollView>
+            </ScrollView >
         )
     }
 }
@@ -302,7 +395,47 @@ const styles = StyleSheet.create({
     },
     textAreaStyle: {
         height: 180,
-        alignItems: 'flex-start',
-        paddingVertical: StyleConfig.countPixelRatio(6)
+        textAlignVertical: 'top'
+    },
+    setIconContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        borderRadius: 30,
+        backgroundColor: 'yellow',
+        justifyContent: 'space-between'
+        // justifyContent: 'flex-end'
+    },
+    textInputStyle: {
+        flex: 1,
+        flexDirection: 'row',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        width: '100%',
+        marginTop: StyleConfig.countPixelRatio(12),
+        borderWidth: StyleConfig.countPixelRatio(1),
+        borderRadius: StyleConfig.countPixelRatio(30),
+        borderColor: StyleConfig.COLOR.WHITE_OFF,
+        fontSize: StyleConfig.fontSizeH3,
+        fontFamily: StyleConfig.fontMedium,
+        backgroundColor: StyleConfig.COLOR.LIGHTER_GREY,
+        paddingHorizontal: StyleConfig.countPixelRatio(15),
+        shadowColor: StyleConfig.COLOR.BLACK,
+        shadowOpacity: 0.1,
+        elevation: 2,
+        shadowOffset: {
+            height: 0,
+            width: 0
+        },
+    },
+    addButtonContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: StyleConfig.responsiveWidth(40),
+        alignSelf: 'flex-end',
+        borderColor: 'transparent'
+    },
+    buttonContainer: {
+        marginVertical: StyleConfig.countPixelRatio(20),
+        marginHorizontal: StyleConfig.countPixelRatio(20)
     },
 })
