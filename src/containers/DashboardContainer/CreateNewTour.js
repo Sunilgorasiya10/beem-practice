@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native'
 import StyleConfig from '../../assets/StyleConfig';
 import BasicInfo from '../../components/CreateNewTourComponent/BasicInfo';
+import Availability from '../../components/CreateNewTourComponent/Availability';
 
 class CreateNewTour extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <BasicInfo></BasicInfo>
+                {/* <BasicInfo></BasicInfo> */}
+                <Availability></Availability>
             </View>
         )
     }

@@ -11,7 +11,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import CTextInput from '../../components/CTextInput';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { create } from 'react-test-renderer';
 
 class BasicInfo extends Component {
 
