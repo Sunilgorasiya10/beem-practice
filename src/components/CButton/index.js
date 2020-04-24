@@ -20,7 +20,8 @@ export default CButton;
 const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: 'row',
-        height: StyleConfig.countPixelRatio(44),
+        height: StyleConfig.responsiveHeight(6.4),
+        // height: StyleConfig.countPixelRatio(44),
         minHeight: StyleConfig.countPixelRatio(44),
         alignItems: 'center',
         justifyContent: 'center',

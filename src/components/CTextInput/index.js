@@ -12,7 +12,6 @@ const CTextInput = (props) => {
         maxLength,
         numberOfLines,
         keyboardType,
-        rightIcon,
         containerStyle,
         input: { onChange, value, },
         meta: { error, touched },
@@ -25,7 +24,6 @@ const CTextInput = (props) => {
                 returnKeyType={returnKeyType}
                 style={[styles.txtInputStyle, containerStyle]}
                 placeholder={placeholder}
-                rightIcon={rightIcon}
                 multiline={multiline}
                 maxLength={maxLength}
                 keyboardType={keyboardType}
@@ -46,26 +44,26 @@ export default CTextInput;
 
 const styles = StyleSheet.create({
 
-    txtInputStyle: {
-        width: '100%'
-        //     // flex: 1,
-        //     // flexDirection: 'row',
-        //     // alignItems: 'center',
-        //     // justifyContent: 'center',
-        //     // marginTop: StyleConfig.countPixelRatio(12),
-        //     // borderWidth: StyleConfig.countPixelRatio(1),
-        //     // borderRadius: StyleConfig.countPixelRatio(30),
-        //     // borderColor: StyleConfig.COLOR.WHITE_OFF,
-        //     // fontSize: StyleConfig.fontSizeH3,
-        //     // fontFamily: StyleConfig.fontMedium,
-        //     // backgroundColor: StyleConfig.COLOR.WHITE,
-        //     // paddingHorizontal: StyleConfig.countPixelRatio(15),
-        //     // shadowColor: StyleConfig.COLOR.BLACK,
-        //     // shadowOpacity: 0.1,
-        //     // elevation: 2,
-        //     // shadowOffset: {
-        //     //     height: 0,
-        //     //     width: 0
-        //     // },
-    }
+    // txtInputStyle: {
+    // width: '100%'
+    //     // flex: 1,
+    //     // flexDirection: 'row',
+    //     // alignItems: 'center',
+    //     // justifyContent: 'center',
+    //     // marginTop: StyleConfig.countPixelRatio(12),
+    //     // borderWidth: StyleConfig.countPixelRatio(1),
+    //     // borderRadius: StyleConfig.countPixelRatio(30),
+    //     // borderColor: StyleConfig.COLOR.WHITE_OFF,
+    //     // fontSize: StyleConfig.fontSizeH3,
+    //     // fontFamily: StyleConfig.fontMedium,
+    //     // backgroundColor: StyleConfig.COLOR.WHITE,
+    //     // paddingHorizontal: StyleConfig.countPixelRatio(15),
+    //     // shadowColor: StyleConfig.COLOR.BLACK,
+    //     // shadowOpacity: 0.1,
+    //     // elevation: 2,
+    //     // shadowOffset: {
+    //     //     height: 0,
+    //     //     width: 0
+    //     // },
+    // }
 })

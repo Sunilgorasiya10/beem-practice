@@ -167,9 +167,7 @@ class BasicInfo extends Component {
                 placeholder: createNewTour.base_shared_price_of_the_tour,
                 keyboardType: 'numeric',
                 isRequire: true,
-                showCurSymbol: '$',
                 blurOnSubmit: true,
-                onSubmitEditing: () => { Keyboard.dismiss() }
             },
             {
                 name: 'base_private_price',
@@ -178,9 +176,7 @@ class BasicInfo extends Component {
                 placeholder: createNewTour.base_private_price_of_the_tour,
                 keyboardType: 'numeric',
                 isRequire: true,
-                showCurSymbol: '$',
                 blurOnSubmit: true,
-                onSubmitEditing: () => { Keyboard.dismiss() }
             },
             {
                 name: 'additional_price',
@@ -189,9 +185,7 @@ class BasicInfo extends Component {
                 placeholder: createNewTour.extra_person_price,
                 keyboardType: 'numeric',
                 isRequire: true,
-                showCurSymbol: '$',
                 blurOnSubmit: true,
-                onSubmitEditing: () => { Keyboard.dismiss() }
             },
             {
                 name: 'tour_description',

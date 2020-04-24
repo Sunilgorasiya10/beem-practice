@@ -137,7 +137,7 @@ class Availibility extends Component {
                                 leftIconSize={30}
                                 leftIconColor={StyleConfig.COLOR.WHITE_OFF}
                                 textStyle={{ fontSize: StyleConfig.fontSizeH3 }}
-                                containerStyle={[styles.addButtonContainer, { backgroundColor: StyleConfig.COLOR.GREEN, }]}>
+                                containerStyle={[styles.addButtonContainer, { backgroundColor: StyleConfig.COLOR.GREEN, minHeight: StyleConfig.responsiveHeight(4.5), height: StyleConfig.responsiveHeight(4.5) }]}>
                                 {createNewTour.more_times}
                             </CButton>
                             <View>
