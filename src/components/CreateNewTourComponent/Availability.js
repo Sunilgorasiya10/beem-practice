@@ -43,49 +43,25 @@ class Availibility extends Component {
                         }
                     </View>
                 }
-                {(isTime !== true) ?
-                    (isCalander !== true) ?
-                        <View style={styles.textInputStyle}>
-                            <Field
-                                {...item}
-                                refField={ref => this[name] = ref}
-                                containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
-                                component={CTextInput}>
-                            </Field>
-                            <View style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'center' }}>
-                                <MaterialCommunityIcons name={'chevron-down'} size={30} style={{ position: 'absolute', right: -15 }} color={StyleConfig.COLOR.RED_REDICAL}></MaterialCommunityIcons>
-                            </View>
-                        </View>
-                        :
-                        <View style={styles.textInputStyle}>
-                            <Field
-                                {...item}
-                                refField={ref => this[name] = ref}
-                                containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
-                                component={CTextInput}>
-                            </Field>
-                            <View style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'center' }}>
-                                <MaterialCommunityIcons name={'calendar'} size={24} style={{}} color={StyleConfig.COLOR.GREY_DARK} />
-                            </View>
-                        </View>
-                    :
-                    <View style={styles.textInputStyle}>
-                        <Field
-                            {...item}
-                            refField={ref => this[name] = ref}
-                            containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
-                            component={CTextInput}>
-                        </Field>
-                        <View style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'center' }}>
-                            <MaterialCommunityIcons name={'clock-outline'} size={24} color={StyleConfig.COLOR.GREY_DARK} />
-                        </View>
-                    </View>
-                }
+
+                <CTextInput
+                    {...item}
+                    refField={ref => this[name] = ref}
+                    containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
+                >
+                </CTextInput>
             </View >
         )
     }
 
+    onPressSaveAndNext = () => {
+        alert('Sccessful')
+    }
+
     render() {
+
+        const { handleSubmit } = this.props;
+
         let AVAILABILITY_DATA = [
             {
                 name: 'start_date',
@@ -95,8 +71,9 @@ class Availibility extends Component {
                 placeholder: createNewTour.available_date,
                 keyboardType: 'default',
                 isRequire: true,
-                isCalander: true,
                 textStyle: { flex: 1 },
+                rightIcon: () => <MaterialCommunityIcons size={24} color={StyleConfig.COLOR.GREY_DARK} name={'calendar'}
+                    style={styles.rightIconCenterStyle} />,
             },
             {
                 name: 'start_time',
@@ -104,8 +81,9 @@ class Availibility extends Component {
                 label: createNewTour.select_time,
                 inputType: 'Touchable',
                 isRequire: true,
-                isTime: true,
                 textStyle: { flex: 3 },
+                rightIcon: () => <MaterialCommunityIcons size={24} color={StyleConfig.COLOR.GREY_DARK} name={'clock-outline'}
+                    style={styles.rightIconCenterStyle} />,
             }
         ]
         let CANCELLATION_DATA = [
@@ -119,6 +97,8 @@ class Availibility extends Component {
                 keyboardType: 'default',
                 isRequire: true,
                 isQuestion: true,
+                rightIcon: () => <MaterialCommunityIcons size={30} color={StyleConfig.COLOR.RED_REDICAL} name={'chevron-down'}
+                    style={styles.rightIconCenterStyle} />,
             }
         ]
         return (
@@ -206,12 +186,14 @@ class Availibility extends Component {
                                         {moment().format('MM/DD/YYYY')}
                                     </CText>
                                 </View>
-                                <CButton
-                                    onPress={() => alert('pressed')}
-                                    textStyle={{ fontSize: 20, color: StyleConfig.COLOR.WHITE, fontFamily: StyleConfig.getFont('medium') }}
-                                    containerStyle={styles.buttonContainer}>
-                                    {createNewTour.save_and_next}
-                                </CButton>
+                                <View style={styles.subContent}>
+                                    <CButton
+                                        onPress={handleSubmit(this.onPressSaveAndNext)}
+                                        textStyle={{ fontSize: 20, color: StyleConfig.COLOR.WHITE, fontFamily: StyleConfig.getFont('medium') }}
+                                        containerStyle={styles.buttonContainer}>
+                                        {createNewTour.save_and_next}
+                                    </CButton>
+                                </View>
                             </View>
                         </View>
                     </View>
@@ -221,9 +203,21 @@ class Availibility extends Component {
     }
 }
 
+const validate = values => {
+    let errors = {};
+    errors.start_date = !values.start_date
+        ? 'Start Date is required' : undefined;
+    errors.start_time = !values.start_time
+        ? 'Start Time is required' : undefined;
+    errors.cancellation_type = !values.cancellation_type
+        ? 'Cnacellation type is required' : undefined;
+    return errors;
+
+}
+
 const withForm = reduxForm({
     form: 'availibilityForm',
-
+    validate,
 })
 
 const mapStateToProps = (state) => {
@@ -252,32 +246,7 @@ const styles = StyleSheet.create({
     },
 
     subContent: {
-        // padding: StyleConfig.countPixelRatio(20),
-        paddingHorizontal: StyleConfig.countPixelRatio(20)
-    },
-
-    textInputStyle: {
-        flex: 1,
-        flexDirection: 'row',
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        width: '100%',
-        height: 50,
-        marginTop: StyleConfig.countPixelRatio(12),
-        borderWidth: StyleConfig.countPixelRatio(1),
-        borderRadius: StyleConfig.countPixelRatio(30),
-        borderColor: StyleConfig.COLOR.WHITE_OFF,
-        fontSize: StyleConfig.fontSizeH3,
-        fontFamily: StyleConfig.fontMedium,
-        backgroundColor: StyleConfig.COLOR.LIGHTER_GREY,
-        paddingHorizontal: StyleConfig.countPixelRatio(15),
-        shadowColor: StyleConfig.COLOR.BLACK,
-        shadowOpacity: 0.1,
-        elevation: 2,
-        shadowOffset: {
-            height: 0,
-            width: 0
-        },
+        padding: StyleConfig.countPixelRatio(20),
     },
     inputContainer: {
         marginBottom: StyleConfig.countPixelRatio(6),
@@ -292,6 +261,9 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         marginVertical: StyleConfig.countPixelRatio(20),
-        marginHorizontal: StyleConfig.countPixelRatio(20)
+        // marginHorizontal: StyleConfig.countPixelRatio(20)
     },
+    rightIconCenterStyle: {
+        alignSelf: 'center'
+    }
 })

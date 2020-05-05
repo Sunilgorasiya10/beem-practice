@@ -9,13 +9,17 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import CTextInput from '../../components/CTextInput';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 class BasicInfo extends Component {
 
     constructor(props) {
         super(props);
+    }
+
+    onPressSaveAndNext = () => {
+        alert('Successful')
     }
 
     _renderLineView = (text) => {
@@ -43,45 +47,19 @@ class BasicInfo extends Component {
                         }
                     </View>
                 }
-                {(isDropdown !== true) ?
-                    (isDescription !== true) ?
-                        <View style={styles.textInputStyle}>
-                            <Field
-                                {...item}
-                                refField={ref => this[name] = ref}
-                                containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
-                                component={CTextInput}></Field>
-                        </View>
-                        :
-                        <View style={styles.textInputStyle}>
-                            <Field
-                                {...item}
-                                refField={ref => this[name] = ref}
-                                containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
-                                component={CTextInput}>
-                            </Field>
-                            <View style={{ flex: 1, alignItems: 'flex-end' }}>
-                                <MaterialCommunityIcons name={'pencil'} size={20} style={{ position: 'absolute', right: 0 }} color={StyleConfig.COLOR.RED_REDICAL} />
-                            </View>
-                        </View>
-                    :
-                    <View style={styles.textInputStyle}>
-                        <Field
-                            {...item}
-                            refField={ref => this[name] = ref}
-                            containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
-                            component={CTextInput}>
-                        </Field>
-                        <View style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'center' }}>
-                            <MaterialCommunityIcons name={'chevron-down'} size={30} style={{ position: 'absolute', right: -15 }} color={StyleConfig.COLOR.RED_REDICAL}></MaterialCommunityIcons>
-                        </View>
-                    </View>
+                <CTextInput
+                    {...item}
+                    refField={ref => this[name] = ref}
+                    containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
+                />
 
-                }
             </View >
         )
     }
     render() {
+
+        const { handleSubmit } = this.props;
+
         let FIELDS_DATA = [
             {
                 name: 'tour_name',
@@ -114,8 +92,8 @@ class BasicInfo extends Component {
                 placeholder: createNewTour.select_a_tour_type,
                 keyboardType: 'default',
                 isRequire: true,
-                isDropdown: true,
-                isDropdown: true,
+                rightIcon: () => <MaterialCommunityIcons size={30} color={StyleConfig.COLOR.RED_REDICAL} name={'chevron-down'}
+                    style={styles.rightIconCenterStyle} />,
             },
             {
                 name: 'transportation_method',
@@ -126,7 +104,8 @@ class BasicInfo extends Component {
                 placeholder: createNewTour.select_a_transportation_method,
                 keyboardType: 'default',
                 isRequire: true,
-                isDropdown: true,
+                rightIcon: () => <MaterialCommunityIcons size={30} color={StyleConfig.COLOR.RED_REDICAL} name={'chevron-down'}
+                    style={styles.rightIconCenterStyle} />,
             },
             {
                 name: 'number_of_participants',
@@ -148,7 +127,8 @@ class BasicInfo extends Component {
                 placeholder: createNewTour.select_a_tour_option,
                 keyboardType: 'default',
                 isRequire: true,
-                isDropdown: true,
+                rightIcon: () => <MaterialCommunityIcons size={30} color={StyleConfig.COLOR.RED_REDICAL} name={'chevron-down'}
+                    style={styles.rightIconCenterStyle} />,
             },
             {
                 name: 'duration',
@@ -198,8 +178,7 @@ class BasicInfo extends Component {
                 isShowLimit: true,
                 containerStyle: styles.textAreaStyle,
                 isRequire: true,
-                isDescription: true
-
+                rightIcon: () => <MaterialCommunityIcons size={20} color={StyleConfig.COLOR.RED_REDICAL} name={'pencil'} />,
             },
             {
                 name: 'languages',
@@ -210,7 +189,8 @@ class BasicInfo extends Component {
                 placeholder: 'Select Language',
                 keyboardType: 'default',
                 isRequire: true,
-                isDropdown: true,
+                rightIcon: () => <MaterialCommunityIcons size={30} color={StyleConfig.COLOR.RED_REDICAL} name={'chevron-down'}
+                    style={styles.rightIconCenterStyle} />,
             },
             {
                 name: 'restrictions',
@@ -221,7 +201,8 @@ class BasicInfo extends Component {
                 placeholder: 'Select Restrictions',
                 keyboardType: 'default',
                 isQuestion: true,
-                isDropdown: true,
+                rightIcon: () => <MaterialCommunityIcons size={30} color={StyleConfig.COLOR.RED_REDICAL} name={'chevron-down'}
+                    style={styles.rightIconCenterStyle} />,
             },
         ];
         let INCLUSIONS_DATA = [
@@ -236,7 +217,8 @@ class BasicInfo extends Component {
                 keyboardType: 'default',
                 isRequire: true,
                 isQuestion: true,
-                isDropdown: true,
+                rightIcon: () => <MaterialCommunityIcons size={30} color={StyleConfig.COLOR.RED_REDICAL} name={'chevron-down'}
+                    style={styles.rightIconCenterStyle} />,
 
             },
             {
@@ -252,7 +234,8 @@ class BasicInfo extends Component {
                 maxLength: 1500,
                 multiline: true,
                 containerStyle: styles.textAreaStyle,
-                isDescription: true,
+                rightIcon: () => <MaterialCommunityIcons size={20} color={StyleConfig.COLOR.RED_REDICAL} name={'pencil'} />,
+
             }
         ];
 
@@ -267,7 +250,7 @@ class BasicInfo extends Component {
                 keyboardType: 'default',
                 containerStyle: styles.textAreaStyle,
                 isRequire: true,
-                isDescription: true,
+                rightIcon: () => <MaterialCommunityIcons size={20} color={StyleConfig.COLOR.RED_REDICAL} name={'pencil'} />,
             }
         ]
         return (
@@ -317,7 +300,7 @@ class BasicInfo extends Component {
                         {BRING_DATA.map((value, key) => this._renderItem(value, key))}
                         <View>
                             <CButton
-                                onPress={() => alert('pressed')}
+                                onPress={handleSubmit(this.onPressSaveAndNext)}
                                 textStyle={{ fontSize: 20, color: StyleConfig.COLOR.WHITE, fontFamily: StyleConfig.getFont('medium') }}
                                 containerStyle={styles.buttonContainer}>
                                 {createNewTour.save_and_next}
@@ -330,8 +313,43 @@ class BasicInfo extends Component {
     }
 }
 
+const validate = values => {
+    let errors = {};
+    errors.tour_name = !values.tour_name
+        ? 'Tour Name is required' : undefined;
+    errors.location = !values.location
+        ? 'Location is required' : undefined;
+    errors.tour_type = (!values.tour_type || values.tour_type.length === 0)
+        ? 'Experience type is required' : undefined;
+    errors.transportation_method = (!values.transportation_method || values.transportation_method.length === 0)
+        ? 'Transportation Method is required' : undefined;
+    errors.number_of_participants = (!values.number_of_participants || values.number_of_participants === '')
+        ? 'Number Of Participants are required' : undefined;
+    errors.public_private_tour = (!values.public_private_tour || values.public_private_tour.length === 0)
+        ? 'Shared or Private Experience are required' : undefined;
+    errors.duration = (!values.duration || values.duration.length === 0)
+        ? 'Duration is required' : undefined;
+    errors.base_shared_price = !values.base_shared_price
+        ? 'Base Shared Price is required' : undefined;
+    errors.base_private_price = !values.base_private_price
+        ? 'Base Private Price is required' : undefined;
+    errors.additional_price = !values.additional_price
+        ? 'Additional Price is required' : undefined;
+    errors.tour_description = !values.tour_description
+        ? 'Experience Description is required' : undefined;
+    errors.languages = (!values.languages || values.languages.length === 0)
+        ? 'Languages are required' : undefined;
+    // errors.restrictions = (!values.restrictions || values.restrictions.length === 0)
+    //     ? 'Restrictions are required' : undefined;
+    errors.suggested_to_bring = (!values.suggested_to_bring || values.suggested_to_bring === '')
+        ? 'Suggested to Bring is required' : undefined;
+    return errors;
+};
+
+
 const withForm = reduxForm({
     form: 'basicInfoForm',
+    validate,
 
 })
 
@@ -398,28 +416,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
         // justifyContent: 'flex-end'
     },
-    textInputStyle: {
-        flex: 1,
-        flexDirection: 'row',
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        width: '100%',
-        marginTop: StyleConfig.countPixelRatio(12),
-        borderWidth: StyleConfig.countPixelRatio(1),
-        borderRadius: StyleConfig.countPixelRatio(30),
-        borderColor: StyleConfig.COLOR.WHITE_OFF,
-        fontSize: StyleConfig.fontSizeH3,
-        fontFamily: StyleConfig.fontMedium,
-        backgroundColor: StyleConfig.COLOR.LIGHTER_GREY,
-        paddingHorizontal: StyleConfig.countPixelRatio(15),
-        shadowColor: StyleConfig.COLOR.BLACK,
-        shadowOpacity: 0.1,
-        elevation: 2,
-        shadowOffset: {
-            height: 0,
-            width: 0
-        },
-    },
     addButtonContainer: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -431,4 +427,7 @@ const styles = StyleSheet.create({
         marginVertical: StyleConfig.countPixelRatio(20),
         marginHorizontal: StyleConfig.countPixelRatio(20)
     },
+    rightIconCenterStyle: {
+        alignSelf: 'center'
+    }
 })

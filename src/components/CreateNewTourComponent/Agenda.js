@@ -51,31 +51,24 @@ class Agenda extends Component {
                         </TouchableOpacity>
                     }
                 </View>
-                {(isDescription !== true) ?
-                    <View style={styles.textInputStyle}>
-                        <Field
-                            {...item}
-                            refField={ref => this[name] = ref}
-                            containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
-                            component={CTextInput}></Field>
-                    </View>
-                    :
-                    <View style={styles.textInputStyle}>
-                        <Field
-                            {...item}
-                            refField={ref => this[name] = ref}
-                            containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
-                            component={CTextInput}>
-                        </Field>
-                        <View style={{ flex: 1, alignItems: 'flex-end' }}>
-                            <MaterialCommunityIcons name={'pencil'} size={20} style={{ position: 'absolute', right: 0 }} color={StyleConfig.COLOR.RED_REDICAL} />
-                        </View>
-                    </View>
-                }
+                <CTextInput
+                    {...item}
+                    refField={ref => this[name] = ref}
+                    containerStyle={[containerStyle, { backgroundColor: StyleConfig.COLOR.LIGHTER_GREY, marginBottom: 4 }]}
+                >
+                </CTextInput>
             </View >
         )
     }
+
+    onPressSaveAndNext = () => {
+        alert('Sccessful')
+    }
+
     render() {
+
+        const { handleSubmit } = this.props;
+
         let AGENDA_START_DATA = [
             {
                 name: 'agenda_description',
@@ -87,7 +80,7 @@ class Agenda extends Component {
                 keyboardType: 'default',
                 containerStyle: styles.textAreaStyle,
                 isRequire: true,
-                isDescription: true
+                rightIcon: () => <MaterialCommunityIcons size={20} color={StyleConfig.COLOR.RED_REDICAL} name={'pencil'} />,
             },
             {
                 name: 'agenda_start_location',
@@ -110,7 +103,7 @@ class Agenda extends Component {
                 isQuestion: true,
                 keyboardType: 'default',
                 containerStyle: styles.textAreaStyle,
-                isDescription: true
+                rightIcon: () => <MaterialCommunityIcons size={20} color={StyleConfig.COLOR.RED_REDICAL} name={'pencil'} />,
             }
         ];
 
@@ -133,7 +126,7 @@ class Agenda extends Component {
                 maxLength: 1500,
                 keyboardType: 'default',
                 containerStyle: styles.textAreaStyle,
-                isDescription: true
+                rightIcon: () => <MaterialCommunityIcons size={20} color={StyleConfig.COLOR.RED_REDICAL} name={'pencil'} />,
                 // isRequire: true,
             },
         ];
@@ -157,7 +150,7 @@ class Agenda extends Component {
                 multiline: true,
                 maxLength: 1500,
                 isQuestion: true,
-                isDescription: true,
+                rightIcon: () => <MaterialCommunityIcons size={20} color={StyleConfig.COLOR.RED_REDICAL} name={'pencil'} />,
                 keyboardType: 'default',
                 containerStyle: styles.textAreaStyle,
             }
@@ -213,7 +206,7 @@ class Agenda extends Component {
                         {AGENDA_END_DATA.map((value, key) => { return this._renderItem(value, key) })}
                         <View>
                             <CButton
-                                onPress={() => alert('pressed')}
+                                onPress={handleSubmit(this.onPressSaveAndNext)}
                                 textStyle={{ fontSize: 20, color: StyleConfig.COLOR.WHITE, fontFamily: StyleConfig.getFont('medium') }}
                                 containerStyle={styles.buttonContainer}>
                                 {createNewTour.save_show_missing}
@@ -226,9 +219,24 @@ class Agenda extends Component {
     }
 }
 
-const withForm = reduxForm({
-    form: 'availibilityForm',
+const validate = values => {
+    let errors = {};
+    errors.agenda_description = !values.agenda_description
+        ? 'Agenda Description is required' : undefined;
+    errors.agenda_start_location = !values.agenda_start_location
+        ? 'Agenda start location is required' : undefined;
+    errors.agenda_start_description = !values.agenda_start_description
+        ? 'Agenda start description is required' : undefined;
+    errors.agenda_end_location = !values.agenda_end_location
+        ? 'Agenda End locatio is required' : undefined;
+    errors.agenda_end_description = !values.agenda_end_description
+        ? 'Agenda End Description is required' : undefined;
+    return errors;
+}
 
+const withForm = reduxForm({
+    form: 'agendaForm',
+    validate,
 })
 
 const mapStateToProps = (state) => {
@@ -315,4 +323,7 @@ const styles = StyleSheet.create({
         marginVertical: StyleConfig.countPixelRatio(20),
         marginHorizontal: StyleConfig.countPixelRatio(20)
     },
+    rightIconCenterStyle: {
+        alignSelf: 'center'
+    }
 })
