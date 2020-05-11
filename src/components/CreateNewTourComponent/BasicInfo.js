@@ -79,8 +79,8 @@ class BasicInfo extends Component {
                 keyboardType: 'default',
                 isRequire: true,
                 outSideLeftIcon: AppImages.rightArrow,
-                textStyle: { fontSize: 14, textAlign: 'left' },
-                containerStyle: { justifyContent: 'flex-start' },
+                // textStyle: { fontSize: 14, textAlign: 'left' },
+                // containerStyle: { justifyContent: 'flex-start' },
                 onPress: () => this.onPressLocation(),
             },
             {

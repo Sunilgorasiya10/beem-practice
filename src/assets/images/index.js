@@ -15,6 +15,10 @@ const AppImages = {
 
     //What I Offer
     photography: require('./photography.png'),
+
+    //Profile Setup
+    identity_card: require('./identity_card.png'),
+    identity_user: require('./identity_user.png'),
 }
 
 export default AppImages;

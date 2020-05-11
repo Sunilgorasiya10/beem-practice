@@ -71,7 +71,7 @@ class Availibility extends Component {
                 placeholder: createNewTour.available_date,
                 keyboardType: 'default',
                 isRequire: true,
-                textStyle: { flex: 1 },
+                // textStyle: { flex: 1 },
                 rightIcon: () => <MaterialCommunityIcons size={24} color={StyleConfig.COLOR.GREY_DARK} name={'calendar'}
                     style={styles.rightIconCenterStyle} />,
             },
@@ -81,7 +81,7 @@ class Availibility extends Component {
                 label: createNewTour.select_time,
                 inputType: 'Touchable',
                 isRequire: true,
-                textStyle: { flex: 3 },
+                // textStyle: { flex: 3 },
                 rightIcon: () => <MaterialCommunityIcons size={24} color={StyleConfig.COLOR.GREY_DARK} name={'clock-outline'}
                     style={styles.rightIconCenterStyle} />,
             }
