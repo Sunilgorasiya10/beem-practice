@@ -19,6 +19,9 @@ const AppImages = {
     //Profile Setup
     identity_card: require('./identity_card.png'),
     identity_user: require('./identity_user.png'),
-}
+    user_profile: require('./user_profile.png'),
 
+    //AccountSetting Image
+    edit: require('./ic_edit.png'),
+}
 export default AppImages;

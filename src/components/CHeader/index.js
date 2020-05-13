@@ -9,11 +9,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 export function CHeader({ headerValue, showRight, showLeft, containerStyle }) {
     return (
         <View style={[styles.headerContainer, containerStyle]}>
-            {/* <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginLeft: 25 }} >
-                <CText type={'bold'} style={styles.headerText}>{headerValue}</CText>
-            </View> */}
-            {/* <View> */}
-            {/* {showLeft &&
+
+            {showLeft &&
                 <View>
                     <TouchableOpacity
                         onPress={() => alert('pressed')}
@@ -23,15 +20,15 @@ export function CHeader({ headerValue, showRight, showLeft, containerStyle }) {
                             name={'arrow-left'}
                             size={30}
                             color={StyleConfig.COLOR.HEADER_ICON}
-                        // style={{ paddingTop: 8 }}
+                            style={{ paddingTop: 8 }}
                         >
                         </MaterialCommunityIcons>
                     </TouchableOpacity>
                 </View>
 
-            } */}
+            }
             {showRight &&
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingLeft: StyleConfig.countPixelRatio(45) }}>
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                     <View style={{ flex: 4, alignItems: 'center' }}>
                         <CText type={'bold'} style={styles.headerText}>{headerValue}</CText>
                     </View>
@@ -44,7 +41,6 @@ export function CHeader({ headerValue, showRight, showLeft, containerStyle }) {
                     </View>
                 </View>
             }
-            {/* </View> */}
         </View>
     )
 }
@@ -68,9 +64,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: StyleConfig.countPixelRatio(3)
     },
-    // buttonContainer: {
-    //     justifyContent: 'center',
-    //     padding: StyleConfig.countPixelRatio(8)
-    // }
+    buttonContainer: {
+        justifyContent: 'center',
+        padding: StyleConfig.countPixelRatio(8)
+    }
 })
 

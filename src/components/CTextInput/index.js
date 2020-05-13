@@ -19,6 +19,7 @@ class ReduxFieldComponent extends Component {
             numberOfLines,
             keyboardType,
             rightIcon,
+            leftIcon,
             containerStyle,
             input: { value, ...restInput },
             meta: { error, touched },
@@ -52,6 +53,7 @@ class ReduxFieldComponent extends Component {
         return (
             <View>
                 <View style={[styles.txtInputStyle, containerStyle]}>
+                    {leftIcon && leftIcon()}
                     {textInputComponent}
                     {rightIcon && rightIcon()}
                 </View>
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         // justifyContent: 'flex-start',
         minHeight: StyleConfig.countPixelRatio(44),
-        marginTop: StyleConfig.countPixelRatio(12),
+        // marginTop: StyleConfig.countPixelRatio(12),
         borderWidth: StyleConfig.countPixelRatio(1),
         borderRadius: StyleConfig.countPixelRatio(30),
         borderColor: StyleConfig.COLOR.WHITE_OFF,

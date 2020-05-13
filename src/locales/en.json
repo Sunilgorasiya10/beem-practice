@@ -169,5 +169,22 @@
         "languages_you_are_good_at": "Languages you are good at",
         "business": "I certify under penalty of perjury I am legally authorized to represent the above business and on behalf of the above business, I confirm I reviewed, understand, and accept Beem's End User License Agreement.",
         "identification": "By submitting the foregoing information in support of my End User License Agreement with Beem, I declare, certify, verify, and state under penalty of perjury that the foregoing information is true and correct."
+    },
+    "accountSetting": {
+        "account": "Account",
+        "home_location": "Home Location",
+        "add_authorized_user": "Add Authorized User",
+        "authorized_user": "Authorized Users",
+        "save_changes": "Save Changes",
+        "delete_account": "Delete Account",
+        "after_deleting": "After deleting your Beem account, all information stored with your Beem account will be permanently inaccessible. Please backup any information you would like to retain from your account prior to deletion.",
+        "add_user_cont": "An invitation email was sent to the email address specified for the authorized user to be added. The added user must now complete account setup through the invitation email.\n\nAfter account setup is completed, the authorized user will be listed under the My Profile menu in the app settings.",
+        "delete_user": "Delete User",
+        "add_user": "Add User",
+        "cancel": "Cancel",
+        "continue": "Continue",
+        "change_password": "Change Password",
+        "where_are_you_from": "Where are you from ?",
+        "created_by": "Created by"
     }
 }

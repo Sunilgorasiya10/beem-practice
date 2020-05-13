@@ -12,6 +12,7 @@ import CreateNewTour from '../containers/DashboardContainer/CreateNewTour';
 
 //SettingContainer
 import UserProfile from '../containers/SettingContainer/UserProfile';
+import AccountSetting from '../containers/SettingContainer/AccountSetting';
 
 const AuthStack = createStackNavigator({
     // Splash: { screen: Splash },
@@ -19,7 +20,8 @@ const AuthStack = createStackNavigator({
     // SignIn: { screen: SignIn },
     // SignUp: { screen: SignUp },
     // CreateNewTour: { screen: CreateNewTour },
-    UserProfile: { screen: UserProfile },
+    // UserProfile: { screen: UserProfile },
+    AccountSetting: { screen: AccountSetting },
 }, {
     headerMode: 'none',
 })
