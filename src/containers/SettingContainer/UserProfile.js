@@ -288,8 +288,19 @@ class UserProfile extends Component {
     }
 }
 
+const validate = values => {
+    let errors = {};
+    errors.name = !values.name
+        ? 'Name is required'
+        : (!name_validator.test(values.name)) ? 'Invalid name' : undefined;
+    errors.nationality = !values.nationality
+        ? 'Nationality is required' : undefined;
+    return errors
+};
+
 const withForm = reduxForm({
-    form: 'profileForm'
+    form: 'profileForm',
+    validate,
 })
 
 const mapStateToProps = (state) => {
