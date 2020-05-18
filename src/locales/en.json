@@ -186,5 +186,26 @@
         "change_password": "Change Password",
         "where_are_you_from": "Where are you from ?",
         "created_by": "Created by"
+    },
+    "bookings": {
+        "for": "for",
+        "bookings": "Bookings",
+        "inProgress_upcoming": "In Progress & Upcoming",
+        "previous_cancelled": "Previous & Cancelled",
+        "upcoming_for": "Upcoming for ",
+        "booking_history_for": "Booking History for ",
+        "upcoming_booking": "Upcoming Bookings"
+    },
+    "settingMenu": {
+        "settings": "Settings",
+        "my_profile": "My Profile",
+        "account": "Account",
+        "notifications": "Notifications",
+        "display_language": "Display Language",
+        "payment": "Payment",
+        "privacy": "Privacy",
+        "legal": "Legal",
+        "hosting_on_beem": "Hosting on Beem",
+        "sign_out": "Sign Out"
     }
 }

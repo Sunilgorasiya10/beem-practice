@@ -30,17 +30,17 @@ class SelectionView extends Component {
                                     </TouchableOpacity>
                                 )
                             }
-                            // else {
-                            //     return (
-                            //         <TouchableOpacity
-                            //             disabled={disabled}
-                            //             onPress={() => onSelect(item)}
-                            //             style={[selected === item.key ? styles.selectedItemView : styles.itemView, index === 0 ? styles.radiusLeft : index.length - 1 ? styles.radiusRight : styles.borderTopBottom]}
-                            //             key={item.key}>
-                            //             <CText type={'medium'} style={selected === item.key ? styles.selectedText : styles.textStyle}>{item.name}</CText>
-                            //         </TouchableOpacity>
-                            //     )
-                            // }
+                            else {
+                                return (
+                                    <TouchableOpacity
+                                        disabled={disabled}
+                                        onPress={() => onSelect(item)}
+                                        style={[selected === item.key ? styles.selectedItemView : styles.itemView, index === 0 ? styles.radiusLeft : index === items.length - 1 ? styles.radiusRight : styles.borderTopBottom]}
+                                        key={item.key}>
+                                        <CText type={'medium'} style={selected === item.key ? styles.selectedText : styles.textStyle}>{item.name}</CText>
+                                    </TouchableOpacity>
+                                )
+                            }
                         })
                     }
                 </View>
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
             height: 0,
             width: 0,
         },
-        elevation: (StyleConfig.isIphone) ? 0 : 1,
+        elevation: 1,
     },
     itemView: {
         flex: 1,
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
             height: 0,
             width: 0,
         },
-        elevation: (StyleConfig.isIphone) ? 0 : 1,
+        elevation: 1,
     },
     radiusLeft: {
         borderTopLeftRadius: StyleConfig.countPixelRatio(RADIUS),
@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
         borderColor: StyleConfig.COLOR.CHAMBRAY,
         borderWidth: StyleConfig.countPixelRatio(0.8),
         borderRightWidth: StyleConfig.countPixelRatio(0.8),
+
     },
     radiusRight: {
         borderTopRightRadius: StyleConfig.countPixelRatio(RADIUS),

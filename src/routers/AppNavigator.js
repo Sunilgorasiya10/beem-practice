@@ -9,10 +9,12 @@ import Splash from '../containers/AuthContainer/Splash';
 
 //DashboardContainer
 import CreateNewTour from '../containers/DashboardContainer/CreateNewTour';
+import Bookings from '../containers/DashboardContainer/Bookings';
 
 //SettingContainer
 import UserProfile from '../containers/SettingContainer/UserProfile';
 import AccountSetting from '../containers/SettingContainer/AccountSetting';
+import SettingMenu from '../containers/SettingContainer/SettingMenu';
 
 const AuthStack = createStackNavigator({
     // Splash: { screen: Splash },
@@ -21,7 +23,9 @@ const AuthStack = createStackNavigator({
     // SignUp: { screen: SignUp },
     // CreateNewTour: { screen: CreateNewTour },
     // UserProfile: { screen: UserProfile },
-    AccountSetting: { screen: AccountSetting },
+    // AccountSetting: { screen: AccountSetting },
+    // Bookings: { screen: Bookings },
+    SettingMenu: { screen: SettingMenu },
 }, {
     headerMode: 'none',
 })
