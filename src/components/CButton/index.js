@@ -1,19 +1,44 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Image } from 'react-native';
 import CText from '../../components/CText';
 import StyleConfig from '../../assets/StyleConfig';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const CButton = ({ children, containerStyle, onPress, textStyle, isLeftIcon, leftIconName, leftIconSize, leftIconColor }) => (
-    <TouchableOpacity
-        style={[styles.buttonContainer, containerStyle]}
-        onPress={onPress}>
-        {isLeftIcon &&
-            <Icon style={styles.leftIconStyle} name={leftIconName} size={leftIconSize} color={leftIconColor}></Icon>
-        }
-        <CText type={'medium'} style={[styles.buttonText, textStyle]}>{children}</CText>
-    </TouchableOpacity>
-);
+const CButton = ({ children, containerStyle, onPress, textStyle, isLeftIcon, leftIconName,
+    leftIconSize, leftIconColor, setting, source, imageStyle, isIcon, isRightImage, rightSource, rightImageStyle }) => {
+
+    if (setting) {
+        return (
+            <TouchableOpacity
+                onPress={onPress}
+                style={[styles.settingButtonContainer, containerStyle, { justifyContent: isIcon ? 'flex-start' : 'center' }]}
+            >
+                {isIcon &&
+                    <Image source={source} resizeMode={'contain'} style={[styles.iamge, imageStyle]}></Image>
+                }
+                <CText type={'medium'} style={[styles.settingButtonText, textStyle]}>{children}</CText>
+                {isRightImage &&
+                    <View style={{ alignItems: 'flex-end', justifyContent: 'center', flex: 1 }}>
+                        <Image source={rightSource} resizeMode={'contain'} style={[styles.rightSettingImage, rightImageStyle]} />
+                    </View>
+                }
+            </TouchableOpacity>
+        )
+
+    } else {
+        return (
+            <TouchableOpacity
+                style={[styles.buttonContainer, containerStyle]}
+                onPress={onPress}>
+                {isLeftIcon &&
+                    <Icon style={styles.leftIconStyle} name={leftIconName} size={leftIconSize} color={leftIconColor}></Icon>
+                }
+                <CText type={'medium'} style={[styles.buttonText, textStyle]}>{children}</CText>
+            </TouchableOpacity>
+        )
+    }
+
+}
 
 export default CButton;
 
@@ -45,5 +70,28 @@ const styles = StyleSheet.create({
     },
     leftIconStyle: {
         paddingRight: StyleConfig.countPixelRatio(8),
-    }
+    },
+    iamge: {
+        height: StyleConfig.countPixelRatio(20),
+        width: StyleConfig.countPixelRatio(20)
+    },
+    settingButtonContainer: {
+        flexDirection: 'row',
+        height: StyleConfig.countPixelRatio(44),
+        minHeight: StyleConfig.countPixelRatio(44),
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginVertical: StyleConfig.countPixelRatio(5),
+        backgroundColor: StyleConfig.COLOR.RED_REDICAL,
+    },
+    settingButtonText: {
+        color: StyleConfig.COLOR.WHITE,
+        fontSize: StyleConfig.fontSizeH2_3,
+        paddingLeft: StyleConfig.countPixelRatio(10)
+    },
+    rightSettingImage: {
+        height: StyleConfig.countPixelRatio(10),
+        width: StyleConfig.countPixelRatio(10),
+        position: 'absolute'
+    },
 })
