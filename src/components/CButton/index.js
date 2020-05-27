@@ -5,7 +5,8 @@ import StyleConfig from '../../assets/StyleConfig';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const CButton = ({ children, containerStyle, onPress, textStyle, isLeftIcon, leftIconName,
-    leftIconSize, leftIconColor, setting, source, imageStyle, isIcon, isRightImage, rightSource, rightImageStyle }) => {
+    leftIconSize, leftIconColor, setting, source, imageStyle, isIcon, isRightImage, rightSource,
+    rightImageStyle }) => {
 
     if (setting) {
         return (
@@ -44,7 +45,7 @@ export default CButton;
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        flexDirection: 'row',
+        // flexDirection: 'row',
         height: StyleConfig.responsiveHeight(6.4),
         // height: StyleConfig.countPixelRatio(44),
         minHeight: StyleConfig.countPixelRatio(44),
@@ -80,18 +81,15 @@ const styles = StyleSheet.create({
         height: StyleConfig.countPixelRatio(44),
         minHeight: StyleConfig.countPixelRatio(44),
         alignItems: 'center',
-        justifyContent: 'center',
         marginVertical: StyleConfig.countPixelRatio(5),
-        backgroundColor: StyleConfig.COLOR.RED_REDICAL,
+        // backgroundColor: StyleConfig.COLOR.BACKGROUND
     },
     settingButtonText: {
-        color: StyleConfig.COLOR.WHITE,
-        fontSize: StyleConfig.fontSizeH2_3,
         paddingLeft: StyleConfig.countPixelRatio(10)
     },
     rightSettingImage: {
         height: StyleConfig.countPixelRatio(10),
         width: StyleConfig.countPixelRatio(10),
-        position: 'absolute'
+        // position: 'absolute'
     },
 })

@@ -48,6 +48,37 @@ const DATA = [
     },
 ]
 class SettingMenu extends Component {
+
+    constructor(props) {
+        super(props)
+    }
+
+    onItemSelect = (item) => {
+        const { navigation } = this.props;
+        switch (item.id) {
+            case MY_PROFILE:
+                navigation.navigate('UserProfile');
+                break;
+            case ACCOUNT:
+                navigation.navigate('Acc-ountSetting');
+                break;
+            case NOTIFICATION:
+                navigation.navigate('NotificationSetting');
+                break;
+            case LANGUAGE:
+                navigation.navigate('DisplayLanguage');
+                break;
+            case PAYMENT:
+                navigation.navigate('PaymentOption');
+                break;
+            case PRIVACY:
+                navigation.navigate('PrivacyPolicy');
+                break;
+            case LEGAL:
+                navigation.navigate('TermsOf');
+                break;
+        }
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -71,7 +102,7 @@ class SettingMenu extends Component {
                             </MaterialCommunityIcons>
                             <View style={{ width: StyleConfig.responsiveWidth(55) }}>
                                 <CText type={'regular'} style={styles.emailText}
-                                    numberOfLines={1} ellipseMode={'tail'}>{'sunilasda ASSS ASWWWWW asSKAsojasd jjZJlxAxx aljdxa xjal '}</CText>
+                                    numberOfLines={1} ellipseMode={'tail'}>{'demo123.mail@gmail.com'}</CText>
                             </View>
                         </View>
                     </View>
@@ -89,7 +120,7 @@ class SettingMenu extends Component {
                                 rightSource={AppImages.rightArrow}
                                 imageStyle={{ marginLeft: StyleConfig.countPixelRatio(0) }}
                                 textStyle={styles.textStyle}
-                                onPress={() => alert('pressed')}
+                                onPress={() => this.onItemSelect(item)}
                             ></CButton>
                         </View>
                     )
@@ -138,7 +169,7 @@ const styles = StyleSheet.create({
     },
     settingButtons: {
         width: StyleConfig.responsiveWidth(90),
-        backgroundColor: StyleConfig.COLOR.WHITE_OFF,
+        // backgroundColor: StyleConfig.COLOR.GREEN_LIGHT,
         borderWidth: StyleConfig.countPixelRatio(0),
         paddingHorizontal: StyleConfig.countPixelRatio(15)
     },

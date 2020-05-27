@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
     },
     txtInputStyle: {
         // width: '100%',
-
         flexDirection: 'row',
         alignItems: 'flex-start',
         // justifyContent: 'flex-start',

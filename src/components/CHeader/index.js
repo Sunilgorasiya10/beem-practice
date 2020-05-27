@@ -1,17 +1,18 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import CButton from '../../components/CButton';
 import CText from '../../components/CText';
+import AppImages from '../../assets/images/index';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import StyleConfig from '../../assets/StyleConfig';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export function CHeader({ headerValue, showRight, showLeft, containerStyle }) {
+export function CHeader({ headerValue, showRight, showLeft, containerStyle, headerTextStyle, IsIcon }) {
     return (
         <View style={[styles.headerContainer, containerStyle]}>
 
             {showLeft &&
-                <View>
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <TouchableOpacity
                         onPress={() => alert('pressed')}
                         style={styles.buttonContainer}
@@ -27,18 +28,16 @@ export function CHeader({ headerValue, showRight, showLeft, containerStyle }) {
                 </View>
 
             }
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+                <CText type={'bold'} style={[styles.headerText, headerTextStyle]}>{headerValue}</CText>
+            </View>
             {showRight &&
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                    <View style={{ flex: 4, alignItems: 'center' }}>
-                        <CText type={'bold'} style={styles.headerText}>{headerValue}</CText>
-                    </View>
-                    <View style={{ flex: 1, alignItems: 'flex-end' }}>
-                        <TouchableOpacity onPress={() => alert('pressed')}
-                            style={styles.buttonMenuContainer}
-                        >
-                            <MaterialCommunityIcons name={'menu'} size={26} color={StyleConfig.COLOR.HEADER_ICON}></MaterialCommunityIcons>
-                        </TouchableOpacity>
-                    </View>
+                <View style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+                    <TouchableOpacity onPress={() => alert('pressed')}
+                        style={styles.buttonMenuContainer}
+                    >
+                        <MaterialCommunityIcons name={'menu'} size={26} color={StyleConfig.COLOR.HEADER_ICON}></MaterialCommunityIcons>
+                    </TouchableOpacity>
                 </View>
             }
         </View>
@@ -66,7 +65,11 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         justifyContent: 'center',
+        alignItems: 'center',
         padding: StyleConfig.countPixelRatio(8)
-    }
+    },
+    appIconStyle: {
+        height: StyleConfig.countPixelRatio(50),
+    },
 })
 

@@ -33,5 +33,8 @@ const AppImages = {
     privacy: require('./ic_privacy.png'),
     legal: require('./ic_legal.png'),
     rightArrow: require('./ic_rightArrow.png'),
+
+    //PaymentOptions Image
+    visa: require('./ic_visa.png'),
 }
 export default AppImages;
