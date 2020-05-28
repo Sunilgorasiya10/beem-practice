@@ -12,6 +12,7 @@ import TermsOf from '../containers/AuthContainer/TermsOf';
 //DashboardContainer
 import CreateNewTour from '../containers/DashboardContainer/CreateNewTour';
 import Bookings from '../containers/DashboardContainer/Bookings';
+import Dashboard from '../containers/DashboardContainer/Dashboard';
 
 //SettingContainer
 import UserProfile from '../containers/SettingContainer/UserProfile';
@@ -29,16 +30,16 @@ const AuthStack = createStackNavigator({
     // SignUp: { screen: SignUp },
     // CreateNewTour: { screen: CreateNewTour },
     // Bookings: { screen: Bookings },
-    SettingMenu: { screen: SettingMenu },
+    // SettingMenu: { screen: SettingMenu },
     // UserProfile: { screen: UserProfile },
     // AccountSetting: { screen: AccountSetting },
     // DisplayLanguage: { screen: DisplayLanguage },
     // NotificationSetting: { screen: NotificationSetting },
-    PaymentOption: { screen: PaymentOption },
+    // PaymentOption: { screen: PaymentOption },
     // PrivacyPolicy: { screen: PrivacyPolicy },
     // TermsOf: { screen: TermsOf },
-    CreatePaymentAccount: { screen: CreatePaymentAccount }
-
+    // CreatePaymentAccount: { screen: CreatePaymentAccount }
+    Dashboard: { screen: Dashboard },
 }, {
     headerMode: 'none',
 })

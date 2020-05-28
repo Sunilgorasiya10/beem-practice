@@ -7,7 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import StyleConfig from '../../assets/StyleConfig';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export function CHeader({ headerValue, showRight, showLeft, containerStyle, headerTextStyle, IsIcon }) {
+export function CHeader({ headerValue, showRight, showLeft, containerStyle, headerTextStyle, IsIcon, IsLeftIcon }) {
     return (
         <View style={[styles.headerContainer, containerStyle]}>
 
@@ -28,6 +28,25 @@ export function CHeader({ headerValue, showRight, showLeft, containerStyle, head
                 </View>
 
             }
+
+            {IsLeftIcon &&
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <TouchableOpacity
+                        onPress={() => alert('pressed')}
+                        style={styles.buttonContainer}
+                    >
+                        <MaterialCommunityIcons
+                            name={'email'}
+                            size={30}
+                            color={StyleConfig.COLOR.RED_REDICAL}
+                            style={{ paddingTop: 8 }}
+                        >
+                        </MaterialCommunityIcons>
+                    </TouchableOpacity>
+                </View>
+
+            }
+
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
                 <CText type={'bold'} style={[styles.headerText, headerTextStyle]}>{headerValue}</CText>
             </View>
