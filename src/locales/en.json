@@ -372,5 +372,124 @@
         "paragraph26": "Beem’s Service is not available for use by persons under the age of 18. You may not authorize third parties to use your Account, and you may not allow persons under the age of 18 to receive services and goods, transportation, or logistics services from Third Party Providers unless they are accompanied by you. You may not assign or otherwise transfer your Account to any other person or entity. You agree to comply with all applicable laws when accessing or using Beem’s Services, and you may only access or use Beem’s Services for lawful purposes (e.g., no transport of unlawful or hazardous materials). You may not in your access or use of Beem’s Services cause nuisance, annoyance, inconvenience, or property damage, whether to the Third Party Provider or any other party. In certain instances you may be asked to provide proof of identity or other method of identity verification to access or use Beem’s Services, and you agree that you may be denied access to or use of Beem’s Services if you refuse to provide proof of identity or other method of identity verification.",
         "subheading16": "Text Messaging and Telephone Calls.",
         "paragraph27": "You agree that Beem may contact you by telephone or text messages (including by an automatic telephone dialing system) at any of the phone numbers provided by you or on your behalf in connection with a Beem account, including for marketing purposes. You understand that you are not required to provide this consent as a condition of purchasing any property, goods or services. You also understand that you may opt out of receiving text messages from Beem at any time, either by replying the word \"STOP\" using the mobile device that is receiving the messages, or by contacting help@beemtravel.com. If you do not choose to opt out, Beem may contact you as outlined in its U.S. Privacy Policy statement, located at www.beemtravel.com/legal/privacy."
+    },
+    "tipYourGuide": {
+        "tip_your_guide": "Tip Your Guide",
+        "tip_amount": "Tip Amount",
+        "select_amount": "Select from 10%, 20%, 30% or enter a custome amount",
+        "payment_total": "Payment Total",
+        "charged_amount": "You will be charged the following amount",
+        "comments": "Comments",
+        "comment_placeholder1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "send_tip": "Send Tip",
+        "tip_policy_1": "Your Guide will receive the full payment amount without any playform and processing fees deducted from your tip.",
+        "tip_policy_2": "Please note tips are intended for gratuity only, these payments are non-refundable and should not be used as an alternative payment method for an experiance add-on or modification.",
+        "tip_policy_3": "Customer support will not be provided for any misuse of the tipping system for non-gratuity purposes.",
+        "tip_amount_data": [
+            {
+                "value": "10%"
+            },
+            {
+                "value": "15%"
+            },
+            {
+                "value": "20%"
+            },
+            {
+                "value": "Custom Amount"
+            }
+        ]
+    },
+    "landing": {
+        "trip_builder": "Trip Builder",
+        "planning_for_trip": "Planning for trip:",
+        "where_would_you_like_togo": "Where would you like to go?",
+        "when_would_you_like_togo": "When would you like to go?",
+        "start_date": "Start Date (Today)",
+        "end_date": "End Date (+3 Days)",
+        "shared_activities_with_other_parties": "Shared activities with other parties?",
+        "private": "PRIVATE",
+        "shared": "SHARED",
+        "both": "BOTH",
+        "activity_type": "Activity Types",
+        "update": "Update",
+        "all": "ALL",
+        "experiences": "EXPERIENCES",
+        "restaurant": "RESTAURANT",
+        "let_us_plan_for_you": "Let us plan for you",
+        "sub_detail_popular_itinieraries": "Browse one of our preplanned itineraries filled with memorable experiences.",
+        "or_make_it_yours": "Or make it yours",
+        "sub_details_or_make_it_yours": "Discover our experiences and build an unforgettable trip.",
+        "dining_experiences": "Dining",
+        "sight_seeing_experiences": "Sight Seeing",
+        "cultural_experiences": "Cultural",
+        "adventurous_experiences": "Adventurous",
+        "find_what_you_like": "Didn't Find What You Like?",
+        "select_what_types_of_activities_you_are_interested_in": "Select what types of activities you are interested in",
+        "select_multiple": "Select Multiple",
+        "restrictions": "Restrictions and Accommodations",
+        "please_indicate_your_restrictions": "Please indicate your restrictions and accommodation",
+        "budget_range": "Budget Range",
+        "please_indicate_your_preferred_daily_budget": "Please indicate your preferred daily budget",
+        "update_recommendations": "Update Recommendations",
+        "build_my_own_trip": "Build My Own Trip",
+        "plan_a_personalized_trip": "Plan a personalized trip with us according to your preferences.",
+        "wegether_supports_a_maximum_party": "Wegether supports a maximum party size of 10 people. Please contact and coordinate with your guide to make special arrangements if your party size exceeds 10 people.",
+        "i_understand": "I Understand",
+        "search": "Search",
+        "trip_date": "Trip and date:",
+        "no_experience": "We apologize, there are currently no experiences in the selected region. Thank you for your interest, we will work on supporting this region."
+    },
+    "bookingConfirm": {
+        "add_to_activity_cart": "Add to Activity Cart",
+        "here_is_what_you_will_book": "Here is what you will book",
+        "tour_name": "Tour Name",
+        "select_trip": "Select Trip",
+        "create_new_trip": "Create New Trip",
+        "date": "Date",
+        "start_date": "Start Date",
+        "end_date": "End Date",
+        "price": "Price",
+        "participants": "Participants",
+        "meetup_time": "Meetup Time",
+        "experience_type": "Experience Type",
+        "itinerary_name": "Itinierary Name",
+        "any_special_requests_or_notes_for_James": "Any special requests or notes for",
+        "contact": "Contact",
+        "payment_method": "Payment Method",
+        "meeting_point": "Meeting Point",
+        "confirm": "CONFIRM",
+        "itinerary_total": "(itinerary total)",
+        "tax_included": "(tax included)",
+        "add_this_activity_to_which_trip": "Add this activity to which trip?",
+        "confirm_keep_browsing": "Confirm & Keep Browsing",
+        "checkout": "Checkout",
+        "reserved_for": "Reserved for",
+        "request_for": "Request for",
+        "activity": [
+            {
+                "value": "Personal Emergency"
+            },
+            {
+                "value": "Plans Changed"
+            },
+            {
+                "value": "Found Better Activity"
+            },
+            {
+                "value": "No Longer Interested"
+            },
+            {
+                "value": "Weather"
+            }
+        ],
+        "wegether_supports": "Wegether supports a maximum of 10 participants per experience. This limit helps ensure our users can enjoy a personalized and exclusive experience.\n\nCompanies with multiple guides using Wegether may override this limit provided one guide will host a maximum of 10 participants per experience.\n",
+        "please_review_the": "Please review the",
+        "wegether_listing": "Wegether Listing Addendum Agreement",
+        "for_more": "for more information.",
+        "participant_limit_reached": "Participant Limit Reached",
+        "i_understand": "I Understand",
+        "select_experience_type": "Select Experience Type",
+        "create_trip": "Create New Trip"
     }
 }
