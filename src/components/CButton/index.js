@@ -4,8 +4,8 @@ import CText from '../../components/CText';
 import StyleConfig from '../../assets/StyleConfig';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const CButton = ({ children, containerStyle, onPress, textStyle, isLeftIcon, leftIconName,
-    leftIconSize, leftIconColor, setting, source, imageStyle, isIcon, isRightImage, rightSource,
+const CButton = ({ children, containerStyle, onPress, textStyle, rightIconColor, isLeftIcon, leftIconName,
+    leftIconSize, leftIconColor, setting, isCenter, source, isImage, isRightIcon, dropdown, rightIconStyle, rightIconName, rightIconSize, imageStyle, isIcon, isRightImage, rightSource,
     rightImageStyle }) => {
 
     if (setting) {
@@ -26,6 +26,19 @@ const CButton = ({ children, containerStyle, onPress, textStyle, isLeftIcon, lef
             </TouchableOpacity>
         )
 
+    } else if (dropdown) {
+        return <TouchableOpacity
+            style={[styles.buttonContainer, { justifyContent: isIcon ? 'flex-start' : 'center' }, containerStyle,]}
+            onPress={onPress} >
+
+            {isImage ? <Icon name={name} size={size} color={color} /> :
+                <CText type={'medium'} style={[styles.buttonText, textStyle]}>{children}</CText>}
+
+            {!isCenter && <View style={{ flex: 1 }} />}
+            {isRightIcon &&
+                <Icon style={rightIconStyle} name={rightIconName} size={rightIconSize} color={rightIconColor} />
+            }
+        </TouchableOpacity>
     } else {
         return (
             <TouchableOpacity
@@ -45,10 +58,10 @@ export default CButton;
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        // flexDirection: 'row',
+        flexDirection: 'row',
         height: StyleConfig.responsiveHeight(6.4),
         // height: StyleConfig.countPixelRatio(44),
-        minHeight: StyleConfig.countPixelRatio(44),
+        minHeight: StyleConfig.countPixelRatio(55),
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: StyleConfig.countPixelRatio(1),

@@ -5,6 +5,7 @@ import CText from '../CText';
 import { Field } from 'redux-form';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import CDropdown from '../../components/CDropdown';
 
 
 class ReduxFieldComponent extends Component {
@@ -20,7 +21,17 @@ class ReduxFieldComponent extends Component {
             keyboardType,
             rightIcon,
             leftIcon,
+            inputType,
+            data,
+            isType,
+            disabled,
+            textStyle,
+            isChangeRightIcon,
+            flatListContainerStyle,
+            modalHeading,
             containerStyle,
+            isShowLimit,
+            blurOnSubmit,
             input: { value, ...restInput },
             meta: { error, touched },
             onSubmitEditing } = this.props;
@@ -39,29 +50,61 @@ class ReduxFieldComponent extends Component {
                 placeholderTextColor={placeholderTextColor}
                 secureTextEntry={secureTextEntry}
                 value={value}
+                blurOnSubmit={blurOnSubmit}
+                isShowLimit={isShowLimit}
                 // onChangeText={onChange}
                 onSubmitEditing={onSubmitEditing}
                 {...restInput}
             >
             </TextInput>
-        )
+        );
         const errorComponent = (
             <View>
                 {touched && error && <CText type={'regular'} style={styles.errorText}>{error}</CText>}
             </View>
-        )
-        return (
-            <View>
-                <View style={[styles.txtInputStyle, containerStyle]}>
-                    {leftIcon && leftIcon()}
-                    {textInputComponent}
-                    {rightIcon && rightIcon()}
-                </View>
-                <View style={styles.errorView}>
-                    {errorComponent}
-                </View>
-            </View>
-        )
+        );
+        switch (inputType) {
+            case 'dropdown':
+                return (
+                    <View>
+                        <CDropdown
+                            placeHolder={placeholder}
+                            item={data}
+                            isLeftIcon
+                            leftIcon={leftIcon}
+                            isCancelModal
+                            flatListContainerStyle={flatListContainerStyle}
+                            modalHeading={modalHeading}
+                            // displayImageBtn={(displayImageBtn) ? displayImageBtn : false}
+                            isType={(isType) ? isType : undefined}
+                            dropdownContainerStyle={[styles.dropdownStyle, containerStyle]}
+                            dropdownTextStyle={textStyle}
+                            selectedItem={(item) => onSelectChange(item)}
+                            disabled={(disabled) ? disabled : false}
+                        // selectedDataPrev={selectedDataPrev}
+                        // arrowStyle={arrowStyle}
+                        // selectedData={selectedData}
+                        />
+                        <View style={[styles.errorView, { paddingLeft: StyleConfig.countPixelRatio(5) }]}>
+                            {errorComponent}
+                        </View>
+                    </View>
+                )
+            default:
+                return (
+                    <View>
+                        <View style={[styles.txtInputStyle, containerStyle]}>
+                            {leftIcon && leftIcon()}
+                            {textInputComponent}
+                            {rightIcon && rightIcon()}
+                        </View>
+                        <View style={styles.errorView}>
+                            {errorComponent}
+                        </View>
+                    </View>
+                )
+        }
+
     }
 }
 
@@ -116,6 +159,17 @@ const styles = StyleSheet.create({
     },
     inputStyle: {
         flex: 1
+    },
+    dropdownStyle: {
+        shadowColor: StyleConfig.COLOR.BLACK,
+        borderColor: StyleConfig.COLOR.WHITE_OFF,
+        shadowOpacity: 0.1,
+        elevation: 2,
+        shadowOffset: {
+            height: 0,
+            width: 0
+        },
+        marginVertical: 0
     },
     // leftIconStyle: {
     //     // paddingLeft: StyleConfig.countPixelRatio(8),

@@ -13,6 +13,7 @@ import TermsOf from '../containers/AuthContainer/TermsOf';
 import CreateNewTour from '../containers/DashboardContainer/CreateNewTour';
 import Bookings from '../containers/DashboardContainer/Bookings';
 import Dashboard from '../containers/DashboardContainer/Dashboard';
+import TipYourGuide from '../containers/DashboardContainer/TipYourGuide';
 
 //SettingContainer
 import UserProfile from '../containers/SettingContainer/UserProfile';
@@ -39,7 +40,8 @@ const AuthStack = createStackNavigator({
     // PrivacyPolicy: { screen: PrivacyPolicy },
     // TermsOf: { screen: TermsOf },
     // CreatePaymentAccount: { screen: CreatePaymentAccount }
-    Dashboard: { screen: Dashboard },
+    // Dashboard: { screen: Dashboard },
+    TipYourGuide: { screen: TipYourGuide }
 }, {
     headerMode: 'none',
 })

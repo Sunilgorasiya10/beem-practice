@@ -39,7 +39,7 @@ export function CHeader({ headerValue, showRight, showLeft, containerStyle, head
                             name={'email'}
                             size={30}
                             color={StyleConfig.COLOR.RED_REDICAL}
-                            style={{ paddingTop: 8 }}
+                            style={{ padding: 8 }}
                         >
                         </MaterialCommunityIcons>
                     </TouchableOpacity>
@@ -47,7 +47,7 @@ export function CHeader({ headerValue, showRight, showLeft, containerStyle, head
 
             }
 
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <CText type={'bold'} style={[styles.headerText, headerTextStyle]}>{headerValue}</CText>
             </View>
             {showRight &&
@@ -55,7 +55,7 @@ export function CHeader({ headerValue, showRight, showLeft, containerStyle, head
                     <TouchableOpacity onPress={() => alert('pressed')}
                         style={styles.buttonMenuContainer}
                     >
-                        <MaterialCommunityIcons name={'menu'} size={26} color={StyleConfig.COLOR.HEADER_ICON}></MaterialCommunityIcons>
+                        <MaterialCommunityIcons name={'menu'} size={26} color={StyleConfig.COLOR.HEADER_ICON} ></MaterialCommunityIcons>
                     </TouchableOpacity>
                 </View>
             }
@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
         height: StyleConfig.countPixelRatio(36),
         width: StyleConfig.countPixelRatio(36),
         alignItems: 'center',
-        marginTop: StyleConfig.countPixelRatio(3)
+        marginTop: StyleConfig.countPixelRatio(3),
+        // padding: StyleConfig.countPixelRatio(5)
     },
     buttonContainer: {
         justifyContent: 'center',
