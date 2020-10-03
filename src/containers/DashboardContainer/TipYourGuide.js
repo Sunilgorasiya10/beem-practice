@@ -10,6 +10,10 @@ import { connect } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { ScrollView } from 'react-native-gesture-handler';
 import CButton from '../../components/CButton';
+<<<<<<< HEAD
+=======
+import { getObjectSize } from '../../common/global'
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
 
 
 class TipYourGuide extends Component {
@@ -39,6 +43,23 @@ class TipYourGuide extends Component {
             </View>
         )
     }
+<<<<<<< HEAD
+=======
+
+    _onSelectChange = (item) => {
+        const { price } = this.props;
+        if (item !== undefined && item !== null && getObjectSize(item) !== 0) {
+            if (item[0] !== 'Custom Amount') {
+                let per = item[0].split('%');
+                if (price !== null && price !== undefined && Number(price) !== 0) {
+                    let perData = (Number(price) * Number(per[0])) / 100;
+                    this.props.change('payment_total', Number(perData));
+                }
+            }
+        }
+        this.props.change('tip_amount', item[0]);
+    };
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
     render() {
 
         const { handleSubmit, visible, onDismiss, onPressPayment, navigation } = this.props;
@@ -52,11 +73,21 @@ class TipYourGuide extends Component {
                 label: tipYourGuide.tip_amount,
                 sublabel: tipYourGuide.select_amount,
                 placeholder: 'Select Amount',
+<<<<<<< HEAD
                 returnKeyType: 'done',
                 keyboardType: 'default',
                 blurOnSubmit: true,
                 rightIcon: () => <MaterialCommunityIcons size={30} color={StyleConfig.COLOR.RED_REDICAL} name={'chevron-down'}
                     style={styles.rightIconCenterStyle} />,
+=======
+                onSelectChange: (item) => this._onSelectChange(item),
+                isType: 'singleSelect',
+                returnKeyType: 'done',
+                keyboardType: 'default',
+                blurOnSubmit: true,
+                // rightIcon: () => <MaterialCommunityIcons size={30} color={StyleConfig.COLOR.RED_REDICAL} name={'chevron-down'}
+                //     style={styles.rightIconCenterStyle} />,
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
             },
             {
                 name: 'payment_total',

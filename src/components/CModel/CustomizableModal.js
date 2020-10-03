@@ -1,9 +1,9 @@
 /** Copyright Wegether Technologies LLC 2019 */
 
-import React, {Component} from 'react';
-import {View, StyleSheet, Modal, TouchableHighlight, TouchableWithoutFeedback} from 'react-native';
+import React, { Component } from 'react';
+import { View, StyleSheet, Modal, TouchableHighlight, TouchableWithoutFeedback } from 'react-native';
 import StyleConfig from "../../assets/StyleConfig";
-import CButton from "../CButton";
+import CButton from "../../components/CButton";
 import CText from "../CText";
 
 
@@ -13,7 +13,7 @@ class CustomizableModal extends Component {
     }
 
     render() {
-        const {visible, onSubmit, onDismiss, children, heading, containerStyle, noCancelButton, noSubmitButton, headingTextStyle} = this.props;
+        const { visible, onSubmit, onDismiss, children, heading, containerStyle, noCancelButton, noSubmitButton, headingTextStyle } = this.props;
         return (
             <Modal
                 animationType="fade"
@@ -29,6 +29,7 @@ class CustomizableModal extends Component {
                             <View style={styles.buttonView}>
                                 {!noCancelButton && <View style={styles.leftView}>
                                     <CButton
+                                        roundModalButton
                                         isImage
                                         name={'close'}
                                         size={35}
@@ -40,6 +41,7 @@ class CustomizableModal extends Component {
                                 {!noSubmitButton &&
                                     <View style={styles.rightView}>
                                         <CButton
+                                            roundModalButton
                                             isImage
                                             name={'check'}
                                             size={35}
@@ -106,17 +108,18 @@ const styles = StyleSheet.create({
         backgroundColor: StyleConfig.COLOR.WHITE,
         borderColor: StyleConfig.COLOR.RED_REDICAL,
         borderWidth: StyleConfig.countPixelRatio(0.8),
-        borderRadius: StyleConfig.countPixelRatio(22),
-        width: StyleConfig.countPixelRatio(44),
-        height: StyleConfig.countPixelRatio(44),
+        borderRadius: StyleConfig.countPixelRatio(50),
+        width: StyleConfig.countPixelRatio(55),
+        height: StyleConfig.countPixelRatio(55),
         alignItems: 'center',
         justifyContent: 'center'
     },
     selectedButton: {
         backgroundColor: StyleConfig.COLOR.RED_REDICAL,
-        borderRadius: StyleConfig.countPixelRatio(22),
-        width: StyleConfig.countPixelRatio(44),
-        height: StyleConfig.countPixelRatio(44),
+        borderRadius: StyleConfig.countPixelRatio(50),
+        borderColor: StyleConfig.COLOR.RED_REDICAL,
+        width: StyleConfig.countPixelRatio(55),
+        height: StyleConfig.countPixelRatio(55),
         alignItems: 'center',
         justifyContent: 'center'
     },

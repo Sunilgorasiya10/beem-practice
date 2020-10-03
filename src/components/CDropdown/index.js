@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { View, StyleSheet, FlatList, Text, TouchableOpacity, Modal } from 'react-native'
 import StyleConfig from '../../assets/StyleConfig'
 import CButton from "../CButton";
 import { dropDown } from "../../assets/strings";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import CustomizableModal from "../../components/CModel/CustomizableModal";
+=======
+import { View, StyleSheet, FlatList, Text, TouchableOpacity, Modal, TouchableHighlight, TouchableWithoutFeedback } from 'react-native'
+import StyleConfig from '../../assets/StyleConfig'
+import CButton from "../CButton";
+import { landing, bookingConfirm } from "../../assets/strings";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import CustomizableModal from "../../components/CModel/CustomizableModal";
+import { getSelectedItem, getSelectedItemArr } from '../../common/global';
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
 import CText from "../CText";
 import PaymentRequest from '../../containers/HamburgerContainer/PaymentRequest'
 
@@ -13,6 +23,7 @@ class CDropdown extends Component {
         super(props);
         this.state = {
             focus: false,
+<<<<<<< HEAD
             showCancelModal: false,
             showPaymentRequestModal: false,
             placeHolderValue: props.placeHolder ? props.placeHolder : dropDown.select_multiple,
@@ -20,6 +31,83 @@ class CDropdown extends Component {
         }
     }
 
+=======
+            placeHolderValue: props.placeHolder ? props.placeHolder : landing.select_multiple,
+            item: props.placeHolder ? props.placeHolder : landing.select_multiple,
+            data: props.item,
+            prev_data: [],
+            showCancelModal: false,
+            selectedData: (props.selectedData) ? props.selectedData : ''
+        }
+    }
+
+    componentDidMount = async () => {
+        const { data, selectedData } = this.state;
+        const { isType } = this.props;
+        const selectedDataPrev = this.props.selectedData;
+        let count = 0;
+        let newData = []
+        let newDataArray = data;
+
+        if (selectedDataPrev !== '' && selectedDataPrev !== null && selectedDataPrev !== undefined) {
+            if (isType === 'singleSelect') {
+                newData = data.map((item) => {
+                    count++;
+                    if (selectedDataPrev !== '' && selectedDataPrev !== null && selectedDataPrev !== undefined) {
+                        return { ...item, id: count, selected: (selectedData === item.value) ? true : false };
+                    } else {
+                        return { ...item, id: count, selected: false };
+                    }
+
+                });
+                this.setState({
+                    data: newData
+                })
+            }
+            else {
+                if (getObjectSize(this.state.selectedData) !== 0) {
+                    this.state.selectedData.map((itemData) =>
+                        newDataArray = newDataArray.map((item) => {
+                            count++;
+                            if (selectedDataPrev !== '' && selectedDataPrev !== null && selectedDataPrev !== undefined) {
+                                return {
+                                    ...item,
+                                    id: count,
+                                    selected: item.selected ? true : (itemData === item.value) ? true : false
+                                };
+                            } else {
+                                return { ...item, id: count, selected: false };
+                            }
+                        })
+                    )
+                }
+                else {
+                    newDataArray = newDataArray.map((item) => {
+                        count++;
+                        return { ...item, id: count, selected: false };
+                    })
+                }
+                this.setState({
+                    data: newDataArray
+                })
+            }
+        }
+        else {
+            newDataArray = data.map((item) => {
+                count++;
+                return { ...item, id: count, selected: false };
+            })
+            this.setState({
+                data: newDataArray
+            })
+        }
+        let selectedItem = await getSelectedItemArr(this.state.data);
+        this.props.selectedItem(selectedItem)
+    }
+
+
+
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
     onButtonPress() {
         const { isCancelModal } = this.props
         if (isCancelModal) {
@@ -39,6 +127,10 @@ class CDropdown extends Component {
     }
 
     renderFlatList = (item) => {
+<<<<<<< HEAD
+=======
+        // console.log("test", item)
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
         const { flatListContainerStyle, fltListStyle } = this.props
         return (
             <View style={[styles.content, {
@@ -56,46 +148,148 @@ class CDropdown extends Component {
                     data={item}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => this.renderItems(item)} />
+<<<<<<< HEAD
+=======
+
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
             </View>
         )
     };
 
+<<<<<<< HEAD
     render() {
         const { data, focus, placeHolderValue, showCancelModal, showPaymentRequestModal } = this.state;
         const { modalHeading, containerStyle, isType, displayImageBtn, disabled, textStyle, isChangeRightIcon } = this.props
         // let selectedData = getSelectedItemArr(data);
+=======
+    renderItems = (item) => {
+        const { isCancelModal } = this.props
+        if (isCancelModal) {
+            return (
+                <CButton
+                    // key={item.id}
+                    roundModalButton
+                    isRightIcon
+                    name={item.selected ? 'check' : null}
+                    color={StyleConfig.COLOR.HEADER_ICON}
+                    textStyle={item.selected ? { color: StyleConfig.COLOR.HEADER_ICON } : { color: StyleConfig.COLOR.GREY_DIM }}
+                    size={25}
+                    onPress={() => this.onDataPress(item.id)}
+                    containerStyle={item.selected ? { borderColor: StyleConfig.COLOR.RED_REDICAL } : { borderColor: StyleConfig.COLOR.GREY_DIM }}>
+                    {item.value}
+                </CButton>
+            )
+        } else {
+            return (
+                <TouchableOpacity
+                    style={[styles.renderItems, this.props.style,]}
+                    onPress={() => this.onDataPress(item.id)}>
+                    <Text
+                        style={[{ fontSize: StyleConfig.fontSizeH3 }, item.selected ? { color: StyleConfig.COLOR.HEADER_ICON } : { color: StyleConfig.COLOR.GREY_DIM }]}>{item.value}</Text>
+                    <Icon name={item.selected ? 'check' : null} size={20} color={StyleConfig.COLOR.HEADER_ICON} />
+                </TouchableOpacity>
+            );
+        }
+    };
+
+    onDataPress = async (id) => {
+        const { isType, selected } = this.props;
+        const { data } = this.state;
+        if (isType === 'singleSelect') {
+            let newData = data.map((item) => {
+                if (item.id == id) {
+                    return { ...item, selected: true }
+                } else {
+                    return { ...item, selected: false };
+                }
+            });
+            let selectedItem = await getSelectedItemArr(newData);
+            this.props.selectedItem(selectedItem)
+            if (selectedItem == bookingConfirm.create_new_trip) {
+                this.setState({ showCancelModal: false })
+            }
+            this.setState({
+                data: newData
+            })
+        } else {
+            let newData = data.map((item) => {
+                if (item.id == id) {
+                    return { ...item, selected: !item.selected }
+                } else {
+                    return { ...item, selected: item.selected };
+                }
+            });
+            let selectedItem = await getSelectedItemArr(newData);
+            this.props.selectedItem(selectedItem)
+            this.setState({
+                data: newData
+            })
+        }
+    };
+
+    render() {
+        const { data, focus, placeHolderValue, showCancelModal, showPaymentRequestModal } = this.state;
+        const { modalHeading, containerStyle, isType, selectedItemPlaceHolder, displayImageBtn, disabled, textStyle, isChangeRightIcon } = this.props
+        let itemData = getSelectedItem(data);
+        let selectedData = getSelectedItemArr(data);
+        if (selectedItemPlaceHolder !== '' && selectedItemPlaceHolder !== undefined) {
+            selectedData = selectedItemPlaceHolder
+        }
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
         return (
             <View styles={[styles.container]}>
                 <CButton
                     dropdown
                     onPress={() => this.onButtonPress()}
                     isRightIcon
+<<<<<<< HEAD
                     rightIconName={isChangeRightIcon ? isChangeRightIcon : 'chevron-down'}
                     rightIconSize={isChangeRightIcon ? 20 : 30}
                     rightIconColor={StyleConfig.COLOR.RED_REDICAL}
+=======
+                    name={isChangeRightIcon ? isChangeRightIcon : 'chevron-down'}
+                    size={isChangeRightIcon ? 20 : 30}
+                    color={StyleConfig.COLOR.RED_REDICAL}
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
                     rightIconStyle={styles.dropdownArrowStyle}
                     textStyle={[styles.dropdownText, textStyle]}
                     containerStyle={[styles.dropdownContainer, containerStyle]}
                 // disabled={disabled}
                 >
+<<<<<<< HEAD
                     {(isType === 'singleSelect' && this.state.selectedData.length > 0) ? this.state.selectedData : placeHolderValue}
                 </CButton>
                 {/* {(isType !== 'singleSelect' && !displayImageBtn) &&
                     (Object.keys(itemData).length > 0) &&
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                         {sortData.map((item) => {
+=======
+                    {(isType === 'singleSelect' && selectedData.length > 0) ? selectedData : placeHolderValue}
+                </CButton>
+                {isType !== 'singleSelect' && (Object.keys(itemData).length > 0) &&
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                        {itemData.map((item) => {
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
                             return (
                                 <View key={item.id} style={{ marginHorizontal: StyleConfig.countPixelRatio(5) }}>
                                     <CButton
                                         containerStyle={styles.itemButtonContainer}
                                         textStyle={styles.itemTextStyle}
                                         isRightIcon
+<<<<<<< HEAD
                                         rightIcon={'close'}
+=======
+                                        name={'close'}
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
                                         size={18}
                                         color={StyleConfig.COLOR.WHITE_OFF}
                                         imageStyle={{
                                             marginRight: StyleConfig.countPixelRatio(10),
+<<<<<<< HEAD
                                             marginTop: StyleConfig.countPixelRatio(3),
+=======
+                                            marginTop: StyleConfig.countPixelRatio(3)
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
                                         }}
                                         onPress={() => this.onDataPress(item.id)}
                                     >{item.value}</CButton>
@@ -104,7 +298,11 @@ class CDropdown extends Component {
                         }
                         )}
                     </View>
+<<<<<<< HEAD
                 } */}
+=======
+                }
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
                 {/* {(displayImageBtn && isType !== 'singleSelect') &&
                     (Object.keys(itemData).length > 0) &&
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -123,6 +321,7 @@ class CDropdown extends Component {
                         )}
                     </View>
                 } */}
+<<<<<<< HEAD
                 {/* <Modal */}
                 {/* animationType="slideInDown" */}
                 {/* transparent */}
@@ -139,6 +338,28 @@ class CDropdown extends Component {
                 {/* </View> */}
                 {/* </Modal> */}
 
+=======
+                {/* <Modal
+                    animationType="slideInDown"
+                    transparent
+                    visible={focus}>
+                    <TouchableHighlight style={{
+                        flex: 1,
+                        backgroundColor: 'rgba(0,0,0,0.8)',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }} onPress={() => this.setState({ focus: false })}>
+                        <TouchableWithoutFeedback onPress={() => {
+                        }}>
+                            <View>
+                                {this.renderFlatList(data)}
+                                <CButton containerStyle={{ width: StyleConfig.responsiveWidth(80), alignSelf: 'center' }}
+                                    onPress={() => this.setState({ focus: false })}>Done</CButton>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </TouchableHighlight>
+                </Modal> */}
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
 
                 <CustomizableModal
                     visible={showCancelModal}
@@ -158,6 +379,14 @@ export default CDropdown;
 
 const styles = StyleSheet.create({
 
+<<<<<<< HEAD
+=======
+    container: {
+        backgroundColor: StyleConfig.COLOR.RED_REDICAL,
+        paddingHorizontal: StyleConfig.countPixelRatio(20),
+        alignItems: 'center'
+    },
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
     dropdownContainer: {
         backgroundColor: StyleConfig.COLOR.WHITE,
         justifyContent: 'center',
@@ -166,7 +395,11 @@ const styles = StyleSheet.create({
         borderWidth: StyleConfig.countPixelRatio(0.8),
         zIndex: 3,
         height: 'auto',
+<<<<<<< HEAD
         // paddingVertical: StyleConfig.countPixelRatio(8)
+=======
+        paddingVertical: StyleConfig.countPixelRatio(8)
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
     },
     dropdownArrowStyle: {
         flexDirection: 'row',
@@ -185,4 +418,38 @@ const styles = StyleSheet.create({
         marginLeft: StyleConfig.countPixelRatio(12),
         zIndex: 1,
     },
+<<<<<<< HEAD
+=======
+    flatListContainer: {
+        color: StyleConfig.COLOR.BLACK,
+        width: StyleConfig.responsiveWidth(80),
+        backgroundColor: StyleConfig.COLOR.WHITE,
+        marginHorizontal: StyleConfig.countPixelRatio(12),
+    },
+    content: {
+        height: StyleConfig.responsiveHeight(30),
+        borderWidth: StyleConfig.countPixelRatio(1),
+        borderColor: StyleConfig.COLOR.WHITE_OFF,
+        borderRadius: StyleConfig.countPixelRatio(16),
+        marginVertical: StyleConfig.countPixelRatio(20),
+        backgroundColor: StyleConfig.COLOR.WHITE,
+        shadowColor: StyleConfig.COLOR.WHITE_OFF,
+        shadowOpacity: 0.5,
+        elevation: 3,
+        shadowOffset: {
+            height: 0,
+            width: 0
+        },
+        overflow: 'hidden',
+
+    },
+    renderItems: {
+        width: StyleConfig.responsiveWidth(80),
+        height: StyleConfig.responsiveHeight(5),
+        backgroundColor: StyleConfig.COLOR.WHITE,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
 })

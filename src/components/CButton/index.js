@@ -6,7 +6,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const CButton = ({ children, containerStyle, onPress, textStyle, rightIconColor, isLeftIcon, leftIconName,
     leftIconSize, leftIconColor, setting, isCenter, source, isImage, isRightIcon, dropdown, rightIconStyle, rightIconName, rightIconSize, imageStyle, isIcon, isRightImage, rightSource,
+<<<<<<< HEAD
     rightImageStyle }) => {
+=======
+    rightImageStyle, roundModalButton, name, size, color }) => {
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
 
     if (setting) {
         return (
@@ -36,7 +40,33 @@ const CButton = ({ children, containerStyle, onPress, textStyle, rightIconColor,
 
             {!isCenter && <View style={{ flex: 1 }} />}
             {isRightIcon &&
+<<<<<<< HEAD
                 <Icon style={rightIconStyle} name={rightIconName} size={rightIconSize} color={rightIconColor} />
+=======
+                <Icon style={rightIconStyle} name={name} size={size} color={color} />
+            }
+        </TouchableOpacity>
+    } else if (roundModalButton) {
+        return <TouchableOpacity
+            style={[styles.roundModalButtonContainer, containerStyle, { justifyContent: isIcon ? 'flex-start' : 'center' }]}
+            onPress={onPress} >
+            {isIcon &&
+                <Image source={source} resizeMode={'contain'} style={[styles.image, imageStyle]} />
+            }
+            {isImage ? <Icon name={name} size={size} color={color} /> :
+                <View style={{ flex: 0.9, alignItems: 'center' }}><CText type={'medium'}
+                    style={[styles.buttonText, {
+                        color: StyleConfig.COLOR.BLACK,
+                        fontSize: StyleConfig.fontSizeH3_4,
+                        paddingLeft: StyleConfig.countPixelRatio(48)
+                    }, textStyle]}>{children}</CText></View>}
+            {isRightImage &&
+                <Image source={source} resizeMode={'contain'} style={[styles.image, imageStyle]} />
+            }
+            {isRightIcon &&
+                <View style={{ flex: 0.1, alignItems: 'flex-end', marginHorizontal: StyleConfig.countPixelRatio(10) }}>
+                    <Icon style={imageStyle} name={name} size={size} color={color} /></View>
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
             }
         </TouchableOpacity>
     } else {
@@ -104,5 +134,17 @@ const styles = StyleSheet.create({
         height: StyleConfig.countPixelRatio(10),
         width: StyleConfig.countPixelRatio(10),
         // position: 'absolute'
+    },
+    roundModalButtonContainer: {
+        height: StyleConfig.countPixelRatio(35),
+        flexDirection: 'row',
+        marginBottom: StyleConfig.countPixelRatio(15),
+        marginHorizontal: StyleConfig.countPixelRatio(20),
+        backgroundColor: StyleConfig.COLOR.WHITE,
+        borderWidth: StyleConfig.countPixelRatio(0.8),
+        shadowOpacity: 0,
+        borderRadius: StyleConfig.countPixelRatio(40),
+        alignItems: 'center',
+        justifyContent: 'center'
     },
 })

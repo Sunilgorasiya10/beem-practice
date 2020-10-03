@@ -14,6 +14,10 @@ import CreateNewTour from '../containers/DashboardContainer/CreateNewTour';
 import Bookings from '../containers/DashboardContainer/Bookings';
 import Dashboard from '../containers/DashboardContainer/Dashboard';
 import TipYourGuide from '../containers/DashboardContainer/TipYourGuide';
+<<<<<<< HEAD
+=======
+import DemoDropDown from '../containers/DashboardContainer/DemoDropDown';
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
 
 //SettingContainer
 import UserProfile from '../containers/SettingContainer/UserProfile';
@@ -42,6 +46,10 @@ const AuthStack = createStackNavigator({
     // CreatePaymentAccount: { screen: CreatePaymentAccount }
     // Dashboard: { screen: Dashboard },
     TipYourGuide: { screen: TipYourGuide }
+<<<<<<< HEAD
+=======
+    // DemoDropDown :{screen:DemoDropDown}
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
 }, {
     headerMode: 'none',
 })

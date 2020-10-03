@@ -399,5 +399,100 @@
                 "value": "Custom Amount"
             }
         ]
+<<<<<<< HEAD
+=======
+    },
+    "landing": {
+        "trip_builder": "Trip Builder",
+        "planning_for_trip": "Planning for trip:",
+        "where_would_you_like_togo": "Where would you like to go?",
+        "when_would_you_like_togo": "When would you like to go?",
+        "start_date": "Start Date (Today)",
+        "end_date": "End Date (+3 Days)",
+        "shared_activities_with_other_parties": "Shared activities with other parties?",
+        "private": "PRIVATE",
+        "shared": "SHARED",
+        "both": "BOTH",
+        "activity_type": "Activity Types",
+        "update": "Update",
+        "all": "ALL",
+        "experiences": "EXPERIENCES",
+        "restaurant": "RESTAURANT",
+        "let_us_plan_for_you": "Let us plan for you",
+        "sub_detail_popular_itinieraries": "Browse one of our preplanned itineraries filled with memorable experiences.",
+        "or_make_it_yours": "Or make it yours",
+        "sub_details_or_make_it_yours": "Discover our experiences and build an unforgettable trip.",
+        "dining_experiences": "Dining",
+        "sight_seeing_experiences": "Sight Seeing",
+        "cultural_experiences": "Cultural",
+        "adventurous_experiences": "Adventurous",
+        "find_what_you_like": "Didn't Find What You Like?",
+        "select_what_types_of_activities_you_are_interested_in": "Select what types of activities you are interested in",
+        "select_multiple": "Select Multiple",
+        "restrictions": "Restrictions and Accommodations",
+        "please_indicate_your_restrictions": "Please indicate your restrictions and accommodation",
+        "budget_range": "Budget Range",
+        "please_indicate_your_preferred_daily_budget": "Please indicate your preferred daily budget",
+        "update_recommendations": "Update Recommendations",
+        "build_my_own_trip": "Build My Own Trip",
+        "plan_a_personalized_trip": "Plan a personalized trip with us according to your preferences.",
+        "wegether_supports_a_maximum_party": "Wegether supports a maximum party size of 10 people. Please contact and coordinate with your guide to make special arrangements if your party size exceeds 10 people.",
+        "i_understand": "I Understand",
+        "search": "Search",
+        "trip_date": "Trip and date:",
+        "no_experience": "We apologize, there are currently no experiences in the selected region. Thank you for your interest, we will work on supporting this region."
+    },
+    "bookingConfirm": {
+        "add_to_activity_cart": "Add to Activity Cart",
+        "here_is_what_you_will_book": "Here is what you will book",
+        "tour_name": "Tour Name",
+        "select_trip": "Select Trip",
+        "create_new_trip": "Create New Trip",
+        "date": "Date",
+        "start_date": "Start Date",
+        "end_date": "End Date",
+        "price": "Price",
+        "participants": "Participants",
+        "meetup_time": "Meetup Time",
+        "experience_type": "Experience Type",
+        "itinerary_name": "Itinierary Name",
+        "any_special_requests_or_notes_for_James": "Any special requests or notes for",
+        "contact": "Contact",
+        "payment_method": "Payment Method",
+        "meeting_point": "Meeting Point",
+        "confirm": "CONFIRM",
+        "itinerary_total": "(itinerary total)",
+        "tax_included": "(tax included)",
+        "add_this_activity_to_which_trip": "Add this activity to which trip?",
+        "confirm_keep_browsing": "Confirm & Keep Browsing",
+        "checkout": "Checkout",
+        "reserved_for": "Reserved for",
+        "request_for": "Request for",
+        "activity": [
+            {
+                "value": "Personal Emergency"
+            },
+            {
+                "value": "Plans Changed"
+            },
+            {
+                "value": "Found Better Activity"
+            },
+            {
+                "value": "No Longer Interested"
+            },
+            {
+                "value": "Weather"
+            }
+        ],
+        "wegether_supports": "Wegether supports a maximum of 10 participants per experience. This limit helps ensure our users can enjoy a personalized and exclusive experience.\n\nCompanies with multiple guides using Wegether may override this limit provided one guide will host a maximum of 10 participants per experience.\n",
+        "please_review_the": "Please review the",
+        "wegether_listing": "Wegether Listing Addendum Agreement",
+        "for_more": "for more information.",
+        "participant_limit_reached": "Participant Limit Reached",
+        "i_understand": "I Understand",
+        "select_experience_type": "Select Experience Type",
+        "create_trip": "Create New Trip"
+>>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
     }
 }
