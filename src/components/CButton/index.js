@@ -6,11 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const CButton = ({ children, containerStyle, onPress, textStyle, rightIconColor, isLeftIcon, leftIconName,
     leftIconSize, leftIconColor, setting, isCenter, source, isImage, isRightIcon, dropdown, rightIconStyle, rightIconName, rightIconSize, imageStyle, isIcon, isRightImage, rightSource,
-<<<<<<< HEAD
-    rightImageStyle }) => {
-=======
     rightImageStyle, roundModalButton, name, size, color }) => {
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
 
     if (setting) {
         return (
@@ -40,9 +36,6 @@ const CButton = ({ children, containerStyle, onPress, textStyle, rightIconColor,
 
             {!isCenter && <View style={{ flex: 1 }} />}
             {isRightIcon &&
-<<<<<<< HEAD
-                <Icon style={rightIconStyle} name={rightIconName} size={rightIconSize} color={rightIconColor} />
-=======
                 <Icon style={rightIconStyle} name={name} size={size} color={color} />
             }
         </TouchableOpacity>
@@ -66,7 +59,6 @@ const CButton = ({ children, containerStyle, onPress, textStyle, rightIconColor,
             {isRightIcon &&
                 <View style={{ flex: 0.1, alignItems: 'flex-end', marginHorizontal: StyleConfig.countPixelRatio(10) }}>
                     <Icon style={imageStyle} name={name} size={size} color={color} /></View>
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
             }
         </TouchableOpacity>
     } else {

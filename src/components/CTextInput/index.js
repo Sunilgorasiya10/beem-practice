@@ -32,11 +32,8 @@ class ReduxFieldComponent extends Component {
             containerStyle,
             isShowLimit,
             blurOnSubmit,
-<<<<<<< HEAD
-=======
             onSelectChange,
             selectedData,
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
             input: { value, ...restInput },
             meta: { error, touched },
             onSubmitEditing } = this.props;
@@ -75,22 +72,6 @@ class ReduxFieldComponent extends Component {
                         <CDropdown
                             placeHolder={placeholder}
                             item={data}
-<<<<<<< HEAD
-                            isLeftIcon
-                            leftIcon={leftIcon}
-                            isCancelModal
-                            flatListContainerStyle={flatListContainerStyle}
-                            modalHeading={modalHeading}
-                            // displayImageBtn={(displayImageBtn) ? displayImageBtn : false}
-                            isType={(isType) ? isType : undefined}
-                            dropdownContainerStyle={[styles.dropdownStyle, containerStyle]}
-                            dropdownTextStyle={textStyle}
-                            selectedItem={(item) => onSelectChange(item)}
-                            disabled={(disabled) ? disabled : false}
-                        // selectedDataPrev={selectedDataPrev}
-                        // arrowStyle={arrowStyle}
-                        // selectedData={selectedData}
-=======
                             // isLeftIcon
                             // leftIcon={leftIcon}
                             isCancelModal
@@ -105,7 +86,6 @@ class ReduxFieldComponent extends Component {
                             // selectedDataPrev={selectedDataPrev}
                             // arrowStyle={arrowStyle}
                             selectedData={selectedData}
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
                         />
                         <View style={[styles.errorView, { paddingLeft: StyleConfig.countPixelRatio(5) }]}>
                             {errorComponent}

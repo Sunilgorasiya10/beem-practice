@@ -1,12 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { View, StyleSheet, FlatList, Text, TouchableOpacity, Modal } from 'react-native'
-import StyleConfig from '../../assets/StyleConfig'
-import CButton from "../CButton";
-import { dropDown } from "../../assets/strings";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import CustomizableModal from "../../components/CModel/CustomizableModal";
-=======
 import { View, StyleSheet, FlatList, Text, TouchableOpacity, Modal, TouchableHighlight, TouchableWithoutFeedback } from 'react-native'
 import StyleConfig from '../../assets/StyleConfig'
 import CButton from "../CButton";
@@ -14,7 +6,6 @@ import { landing, bookingConfirm } from "../../assets/strings";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import CustomizableModal from "../../components/CModel/CustomizableModal";
 import { getSelectedItem, getSelectedItemArr } from '../../common/global';
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
 import CText from "../CText";
 import PaymentRequest from '../../containers/HamburgerContainer/PaymentRequest'
 
@@ -23,15 +14,6 @@ class CDropdown extends Component {
         super(props);
         this.state = {
             focus: false,
-<<<<<<< HEAD
-            showCancelModal: false,
-            showPaymentRequestModal: false,
-            placeHolderValue: props.placeHolder ? props.placeHolder : dropDown.select_multiple,
-            selectedData: props.selectedDataPrev ? props.selectedDataPrev : ''
-        }
-    }
-
-=======
             placeHolderValue: props.placeHolder ? props.placeHolder : landing.select_multiple,
             item: props.placeHolder ? props.placeHolder : landing.select_multiple,
             data: props.item,
@@ -107,7 +89,6 @@ class CDropdown extends Component {
 
 
 
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
     onButtonPress() {
         const { isCancelModal } = this.props
         if (isCancelModal) {
@@ -127,10 +108,7 @@ class CDropdown extends Component {
     }
 
     renderFlatList = (item) => {
-<<<<<<< HEAD
-=======
         // console.log("test", item)
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
         const { flatListContainerStyle, fltListStyle } = this.props
         return (
             <View style={[styles.content, {
@@ -148,20 +126,10 @@ class CDropdown extends Component {
                     data={item}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => this.renderItems(item)} />
-<<<<<<< HEAD
-=======
-
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
             </View>
         )
     };
 
-<<<<<<< HEAD
-    render() {
-        const { data, focus, placeHolderValue, showCancelModal, showPaymentRequestModal } = this.state;
-        const { modalHeading, containerStyle, isType, displayImageBtn, disabled, textStyle, isChangeRightIcon } = this.props
-        // let selectedData = getSelectedItemArr(data);
-=======
     renderItems = (item) => {
         const { isCancelModal } = this.props
         if (isCancelModal) {
@@ -235,61 +203,37 @@ class CDropdown extends Component {
         if (selectedItemPlaceHolder !== '' && selectedItemPlaceHolder !== undefined) {
             selectedData = selectedItemPlaceHolder
         }
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
         return (
             <View styles={[styles.container]}>
                 <CButton
                     dropdown
                     onPress={() => this.onButtonPress()}
                     isRightIcon
-<<<<<<< HEAD
-                    rightIconName={isChangeRightIcon ? isChangeRightIcon : 'chevron-down'}
-                    rightIconSize={isChangeRightIcon ? 20 : 30}
-                    rightIconColor={StyleConfig.COLOR.RED_REDICAL}
-=======
                     name={isChangeRightIcon ? isChangeRightIcon : 'chevron-down'}
                     size={isChangeRightIcon ? 20 : 30}
                     color={StyleConfig.COLOR.RED_REDICAL}
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
                     rightIconStyle={styles.dropdownArrowStyle}
                     textStyle={[styles.dropdownText, textStyle]}
                     containerStyle={[styles.dropdownContainer, containerStyle]}
                 // disabled={disabled}
                 >
-<<<<<<< HEAD
-                    {(isType === 'singleSelect' && this.state.selectedData.length > 0) ? this.state.selectedData : placeHolderValue}
-                </CButton>
-                {/* {(isType !== 'singleSelect' && !displayImageBtn) &&
-                    (Object.keys(itemData).length > 0) &&
-                    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-                        {sortData.map((item) => {
-=======
                     {(isType === 'singleSelect' && selectedData.length > 0) ? selectedData : placeHolderValue}
                 </CButton>
                 {isType !== 'singleSelect' && (Object.keys(itemData).length > 0) &&
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                         {itemData.map((item) => {
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
                             return (
                                 <View key={item.id} style={{ marginHorizontal: StyleConfig.countPixelRatio(5) }}>
                                     <CButton
                                         containerStyle={styles.itemButtonContainer}
                                         textStyle={styles.itemTextStyle}
                                         isRightIcon
-<<<<<<< HEAD
-                                        rightIcon={'close'}
-=======
                                         name={'close'}
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
                                         size={18}
                                         color={StyleConfig.COLOR.WHITE_OFF}
                                         imageStyle={{
                                             marginRight: StyleConfig.countPixelRatio(10),
-<<<<<<< HEAD
-                                            marginTop: StyleConfig.countPixelRatio(3),
-=======
                                             marginTop: StyleConfig.countPixelRatio(3)
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
                                         }}
                                         onPress={() => this.onDataPress(item.id)}
                                     >{item.value}</CButton>
@@ -298,11 +242,7 @@ class CDropdown extends Component {
                         }
                         )}
                     </View>
-<<<<<<< HEAD
-                } */}
-=======
                 }
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
                 {/* {(displayImageBtn && isType !== 'singleSelect') &&
                     (Object.keys(itemData).length > 0) &&
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -321,24 +261,6 @@ class CDropdown extends Component {
                         )}
                     </View>
                 } */}
-<<<<<<< HEAD
-                {/* <Modal */}
-                {/* animationType="slideInDown" */}
-                {/* transparent */}
-                {/* > */}
-                {/* <View style={{ */}
-                {/* flex: 1, */}
-                {/* // backgroundColor: 'rgba(0,0,0,0.8)', */}
-                {/* alignItems: 'center', */}
-                {/* justifyContent: 'center' */}
-                {/* }}> */}
-                {/* {this.renderFlatList(data)} */}
-                {/* <CButton containerStyle={{ width: StyleConfig.responsiveWidth(80) }}
-                            onPress={() => alert('done')}>Done</CButton> */}
-                {/* </View> */}
-                {/* </Modal> */}
-
-=======
                 {/* <Modal
                     animationType="slideInDown"
                     transparent
@@ -359,7 +281,6 @@ class CDropdown extends Component {
                         </TouchableWithoutFeedback>
                     </TouchableHighlight>
                 </Modal> */}
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
 
                 <CustomizableModal
                     visible={showCancelModal}
@@ -379,14 +300,11 @@ export default CDropdown;
 
 const styles = StyleSheet.create({
 
-<<<<<<< HEAD
-=======
     container: {
         backgroundColor: StyleConfig.COLOR.RED_REDICAL,
         paddingHorizontal: StyleConfig.countPixelRatio(20),
         alignItems: 'center'
     },
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
     dropdownContainer: {
         backgroundColor: StyleConfig.COLOR.WHITE,
         justifyContent: 'center',
@@ -395,11 +313,7 @@ const styles = StyleSheet.create({
         borderWidth: StyleConfig.countPixelRatio(0.8),
         zIndex: 3,
         height: 'auto',
-<<<<<<< HEAD
-        // paddingVertical: StyleConfig.countPixelRatio(8)
-=======
         paddingVertical: StyleConfig.countPixelRatio(8)
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
     },
     dropdownArrowStyle: {
         flexDirection: 'row',
@@ -418,8 +332,6 @@ const styles = StyleSheet.create({
         marginLeft: StyleConfig.countPixelRatio(12),
         zIndex: 1,
     },
-<<<<<<< HEAD
-=======
     flatListContainer: {
         color: StyleConfig.COLOR.BLACK,
         width: StyleConfig.responsiveWidth(80),
@@ -451,5 +363,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
     },
->>>>>>> a2fd3b126fb9285bb139a4b5b95078f66e89857d
 })
